@@ -4,7 +4,7 @@
     <% @stocks.each do |stock| %>
     <ul>
 
-      <li><input type="checkbox" name="" value="削除">　<%= stock.product_name %>｜</li>
+      <li><input type="checkbox" name="" value="削除">　<%= link_to "#{stock.product_name}", "/stocks/#{stock.id}" %>｜</li>
       <li>賞味期限　｜<%= stock.expiration %>｜</li>
       <li>詳細・メモ　｜<%= stock.detail %>｜</li>
       <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>

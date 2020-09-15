@@ -34,6 +34,8 @@ class StocksController < ApplicationController
   end
 
   def destroy
+    Stock.find(params[:id]).destroy
+    redirect_to stocks_path
   end
 
   private
