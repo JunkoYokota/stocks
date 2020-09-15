@@ -1,0 +1,17 @@
+<div class="content">
+  <div>
+    <a href="/stocks/new">Get Stocked!</a>
+    <% @stocks.each do |stock| %>
+    <ul>
+
+      <li><input type="checkbox" name="" value="削除">　<%= stock.product_name %>｜</li>
+      <li>賞味期限　｜<%= stock.expiration %>｜</li>
+      <li>詳細・メモ　｜<%= stock.detail %>｜</li>
+      <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
+      <li><%= link_to '削除する', "/stocks/#{stock.id}", method: :delete %></li>
+
+    </ul>
+    <% end %>
+
+  </div>
+</div>

@@ -1,3 +1,125 @@
-// Place all the styles related to the stocks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+h1,h2,h3,h4,h5,h6,body {
+  line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  margin: 0;
+}
+a:link{
+  text-decoration: none;
+}
+a:hover{
+  background-color: #336600;
+}
+ul{
+  border: 2px skyblue dashed;
+}
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+li{
+  font-size: 11px;
+}
+
+.title{
+  display: block;
+  height: 30px;
+  width: 690px;
+  margin: 0;
+  padding: 0 5px;
+  background-color: #99cccc;
+}
+.title h1{
+  width: 160px;
+  padding: 0 0 0 15px;
+  line-height: 30px;
+  float: left;
+}
+
+.title p{
+  width: 200px;
+  margin: 0;
+  padding: 10px 0 0 0;
+  display: inline;
+  font-size: 12px;
+  text-align: right;
+  float: right;
+  line-height: 20px;
+}
+
+.user_nav{
+  display: block;
+  width: 640px;
+  margin: 0;
+  padding: 1px 5px;
+  float: left;
+  text-align: center;
+  background-color: #ccff66;
+}
+.user_nav ul{
+  width: 350px;
+  margin: 0;
+  display: flex;
+  float: right;
+  justify-content: center;
+}
+.user_nav li{
+  width: 100px;
+  margin: 2px 5px;
+  border: 1px solid;
+  font-size: 10px;
+  background-color: #999900;
+}
+.content{
+  width: 700px;
+  margin: 0;
+  background-color: #ccffcc;
+  display: block;
+}
+
+.edit{
+  height: 30px;
+  width: 290px;
+  margin: 0 0 0 5px;
+  text-align: center;
+  float: right;
+  font-size: 13px;
+}
+.edit ul{
+  width: 340px;
+  float: right;
+  }
+.edit li{
+  width: 90px;
+  margin: 2px;
+  display: block;
+  float: right;
+  background-color: #999900;
+  border: 1px solid;
+
+  }
+
+.footer{
+  width: 640px;
+  height: 30px;
+  padding: 3px 5px 0;
+  border-top: 7px solid #ccffcc;
+  clear: left;
+  background-color: #999999;
+}
+
+.footer nav{
+  width: 300px;
+  float: right;
+}
+.pagination{
+  text-align: right;
+  font-size: 13px;
+}
+
+.form{
+  margin: 0 70px 0;
+}

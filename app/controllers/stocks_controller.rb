@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   def index
+    @stocks = Stock.order(:expiration)
   end
 
   def new
