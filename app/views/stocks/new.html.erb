@@ -1,0 +1,17 @@
+<al>
+  <%= form_with model: @stock do |form| %>
+    <li><%= form.label :product_name %>
+    <%= form.text_field :product_name, placeholder: '商品名' %>
+    </li>
+    <li><%= form.label :expiration %>
+    <%= form.date_select :expiration, placeholder: '賞味期限' %>
+    </li>
+    <li><%= form.label :detail %>
+    <%= form.text_area :detail, placeholder: '詳細・メモ' %>
+    </li>
+    <li><%= form.label :open_datev %>
+    <%= form.date_select :open_date, placeholder: '開封日' %>
+    </li>
+    <%= form.submit %>投稿する<i class="icon-arrow-right"></i>
+  <% end %>
+</al>
