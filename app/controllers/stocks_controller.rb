@@ -8,8 +8,8 @@ class StocksController < ApplicationController
   end
 
   def create
-    @stock = Stock.new(stock_params)
-    @stock.save
+    @stock = Stock.new(stock_params).save
+    redirect_to stocks_path
     # インスタンスの保存に成功した場合の処理
     #if @stock.save
     #  redirect_to @stock
@@ -25,9 +25,12 @@ class StocksController < ApplicationController
   end
 
   def edit
+    @stock = Stock.find(params[:id])
   end
 
   def update
+    Stock.find(params[:id]).update(stock_params)
+    redirect_to stock_path
   end
 
   def destroy

@@ -2,3 +2,6 @@
 <%= @stock.expiration %>
 <%= @stock.detail %>
 <%= @stock.open_date %>
+
+<%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get%>
+<%= link_to "削除する", "/stocks/#{@stock.id}/destroy", method: :delete %>
