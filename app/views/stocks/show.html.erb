@@ -1,7 +1,11 @@
-<%= @stock.product_name %>
-<%= @stock.expiration %>
-<%= @stock.detail %>
-<%= @stock.open_date %>
+<div class="content">
+  <a href="/stocks/">Home!</a>
 
-<%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get%>
-<%= link_to "削除する", "/stocks/#{@stock.id}", method: :delete %>
+  <%= @stock.product_name %>
+  <%= @stock.expiration %>
+  <%= @stock.detail %>
+  <%= @stock.open_date %>
+
+  <%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get%>
+  <%= link_to "削除する", "/stocks/#{@stock.id}", method: :delete %>
+</div>

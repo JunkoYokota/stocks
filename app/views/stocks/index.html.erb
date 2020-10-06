@@ -7,6 +7,10 @@
       <li><input type="checkbox" name="" value="削除">　<%= link_to "#{stock.product_name}", "/stocks/#{stock.id}" %>｜</li>
       <li>賞味期限　｜<%= stock.expiration %>｜</li>
       <li>詳細・メモ　｜<%= stock.detail %>｜</li>
+      <% if stock.open_date.present? %>
+      <li>開封日　｜<%= stock.open_date %>｜</li>
+      <% end %>
+
       <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
       <li><%= link_to '削除する', "/stocks/#{stock.id}", method: :delete %></li>
 

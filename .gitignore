@@ -39,3 +39,4 @@ yarn-debug.log*
 .DS_Store
 docker-compose.yml
 /config/database.yml
+db/stocks.csv
