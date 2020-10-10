@@ -7,17 +7,22 @@ class StocksController < ApplicationController
     @stock = Stock.new
   end
 
+  def back
+    @stock = Stock.find(params[:ids])
+    render :edit
+  end
+
+  def confirm
+    Stock.where(id：params [：stocks_ids]).destroy_all
+    @stock = stock.find(params[:ids])
+    if @stock.invalid?
+      render :edit
+    end
+  end
+
   def create
     @stock = Stock.new(stock_params).save
     redirect_to stocks_path
-    # インスタンスの保存に成功した場合の処理
-    #if @stock.save
-    #  redirect_to @stock
-
-    # インスタンスの保存に失敗した場合の処理
-    #else
-    #  render :new
-    #end
   end
 
   def show
@@ -33,9 +38,20 @@ class StocksController < ApplicationController
     redirect_to stock_path
   end
 
+
+
   def destroy
     Stock.find(params[:id]).destroy
     redirect_to stocks_path
+  end
+
+  def destroy_all
+    checked_data = params[:deletes].keys
+    if Stocks.destroy(checked_data)
+      redirect_to stocks_path
+    else
+      render action: 'index'
+    end
   end
 
   private

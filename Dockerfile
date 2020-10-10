@@ -6,6 +6,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   apt-get update -qq && apt-get install -y nodejs default-mysql-client vim && \
   apt-get install -y yarn && \
   apt-get install -y imagemagick && \
+  yarn install -y bootstrap && \
+  yarn install -y jquery && \
+  yarn install -y popper.js && \
   apt-get install -y libvips-tools && \
   apt-get install -y locales
 

@@ -1,14 +1,26 @@
 <div class="content">
   <div>
     <a href="/stocks/new">Get Stocked!</a>
+    <%= form_with model: @stocks, url: "stocks/confirm", method: "post" do %>
     <% @stocks.each do |stock| %>
     <ul>
+      <label>
+        <li><%= check_box_tag 'stocks[]',stock.id %></li>
+        <li>商品名　｜
+          <%= stock.product_name %>｜
+        </li>
+        <li>賞味期限　｜
+          <%= stock.expiration %>｜
+        </li>
+        <li>詳細・メモ　｜
+          <%= stock.detail %>｜
+        </li>
 
-      <li><input type="checkbox" name="" value="削除">　<%= link_to "#{stock.product_name}", "/stocks/#{stock.id}" %>｜</li>
-      <li>賞味期限　｜<%= stock.expiration %>｜</li>
-      <li>詳細・メモ　｜<%= stock.detail %>｜</li>
-      <% if stock.open_date.present? %>
-      <li>開封日　｜<%= stock.open_date %>｜</li>
+        <% if stock.open_date.present? %>
+        <li>開封日　｜
+          <%= stock.open_date %>｜
+        </li>
+      </label>
       <% end %>
 
       <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
@@ -16,6 +28,8 @@
 
     </ul>
     <% end %>
-
+    <%= link_to '消費済みにする', "/stocks/confirm", method: :get %>
+    <%= submit_tag "一括削除" %>
+  <% end %>
   </div>
 </div>
