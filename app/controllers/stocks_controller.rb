@@ -30,33 +30,28 @@ class StocksController < ApplicationController
     redirect_to stock_path
   end
 
-  def confirm
-    if params[:edit]
-      @stocks = Stock.where(id: params[:stocks_ids])
-      @stocks.each do |stock|
-        stocks.update!(stocks_params)
-      end
-      redirect_to stocks_path
-    elsif params[:delete]
-      stocks = Stock.where(id: params[:stocks_ids])
-      stocks.each do |stock|
-        stock.destroy
-      redirect_to stocks_path
-      end
-    end
-  end
-
   def destroy
     Stock.find(params[:id]).destroy
     redirect_to stocks_path
   end
 
-  def delete_each
-    stocks = Stock.where(id: params[:stocks_ids])
-    stocks.each do |stock|
-      stock.destroy
+  def confirm
+    if params[:edit_all]
+      @stocks = Stock.where(id: params[:stocks_ids])
+    elsif params[:delete_all]
+      @stocks = Stock.where(id: params[:stocks_ids])
+      @stocks.each do |stock|
+        stock.destroy
+      end
+      redirect_to stocks_path
     end
-    redirect_to stocks_path
+  end
+  
+  def update_all
+    @stocks = Stock.where(params[:ids])
+    @stocks.each do |stock|
+      stock.update(stocks_params)
+    end
   end
 
   private
@@ -65,7 +60,7 @@ class StocksController < ApplicationController
   end
 
   def stocks_params
-    params.permit(stocks_update: [:product_name, :expiration, :detail, :open_date)
+    params.permit(ids: [:product_name, :expiration, :detail, :open_date])
   end
 
 end

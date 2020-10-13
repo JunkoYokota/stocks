@@ -1,7 +1,7 @@
 <div class="content">
   <div>
     <a href="/stocks/new">Get Stocked!</a>
-    <%= form_with model: @stocks, url: stocks_path do |form| %>
+    <%= form_with model: @stocks, url: stocks_path, method: :put do |form| %>
       <% @stocks.each do |stock| %>
         <%= fields_for 'stocks[]', stock do |field| %>
         <ul>
@@ -20,7 +20,8 @@
           <li>
             <%= field.label :open_date %>
             <%= field.date_field :open_date, placeholder: '開封日', value: stock.open_date %>
-          </li>
+          </li> 
+
         </ul>
         <% end %>
       <% end %>
