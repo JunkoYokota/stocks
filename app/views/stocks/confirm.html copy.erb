@@ -1,0 +1,58 @@
+<div class="content">
+  <div>
+    <a href="/stocks/new">Get Stocked!</a>
+    <ul>
+    <%= form_with model: @stocks, url: {controller: 'stocks', action: 'confirm'} do |form| %>
+      <% @stocks.each do |stock| %>
+        <%= fields_for 'stocks[]', stock do |field| %>
+          <li><%= field.label :product_name %><%= field.text_field 'stock.product_name', placeholder: '商品名', value: stock.product_name %></li>
+          <li><%= field.label :expiration %><%= field.date_select :expiration, placeholder: '賞味期限', value: stock.expiration %></li>
+          <li><%= field.label :detail %><%= field.text_area :detail, placeholder: '詳細・メモ', value: stock.detail %></li>
+          <li><%= field.label :open_date %><%= field.date_select :open_date, placeholder: '開封日', value: stock.open_date %></li>
+        <% end %>
+        <%= form.submit %>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="content">
+  <div>
+    <a href="/stocks/new">Get Stocked!</a>
+<% @stocks.each do |stock| %>
+<ul>
+  <label>
+    <li>賞味期限　｜
+      <%= stock.expiration %>｜
+    </li>
+    <li>詳細・メモ　｜
+      <%= stock.detail %>｜
+    </li>
+
+    <% if stock.open_date.present? %>
+    <li>開封日　｜
+      <%= stock.open_date %>｜
+    </li>
+  </label>
+</ul>
+
+
+<%= form_for @reserve, method: :post, url: stocks_back_path do |form| %>
+	<%= form.hidden_field :expiration %>
+	<%= form.hidden_field :detail %>
+	<%= form.hidden_field :note %>
+	<%= form.submit '入力画面に戻る' %>
+<% end %>
+
+<%= form_for @reserve, method: :post, url: stocks_path do |form| %>
+	<%= form.hidden_field :expiration %>
+	<%= form.hidden_field :detail %>
+	<%= form.hidden_field :open_date %>
+	<%= form.submit '送信する' %>
+<% end %>
+
+    <%= submit_tag "一括削除" %>
+  <% end %>
+  </div>
+</div>
