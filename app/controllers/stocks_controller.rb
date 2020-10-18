@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.order(:expiration)
+    @stocks = Stock.recent
   end
 
   def new
@@ -40,18 +40,20 @@ class StocksController < ApplicationController
       @stocks = Stock.where(id: params[:stocks_ids])
     elsif params[:delete_all]
       @stocks = Stock.where(id: params[:stocks_ids])
-      @stocks.each do |stock|
-        stock.destroy
-      end
+        @stocks.each do |stock|
+          stock.destroy
+        end
       redirect_to stocks_path
     end
   end
   
   def update_all
-    @stocks = Stock.where(params[:ids])
-    @stocks.each do |stock|
-      stock.update(stocks_params)
-    end
+    @stocks = Stock.where(id: params[:stocks_ids])
+       @stocks.each do |stock|
+         stocks.update!(stocks_params)
+         binding.pry
+       end
+    redirect_to stocks_path
   end
 
   private
@@ -60,7 +62,9 @@ class StocksController < ApplicationController
   end
 
   def stocks_params
-    params.permit(ids: [:product_name, :expiration, :detail, :open_date])
+    params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date])
   end
 
+  # stocks_params.to_hash => {roduct_name: @product_name, expiration: @expiration, detail: @detail, open_date: @open_date}
 end
+

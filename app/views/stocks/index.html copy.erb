@@ -1,0 +1,24 @@
+<div class="content">
+  <div>
+    <a href="/stocks/new">Get Stocked!</a>
+    <%= form_tag("/confirm_stocks", method: :get) do %>
+      <% @stocks.each do |stock| %>
+        <ul>
+          <label>
+            <%= check_box_tag 'stocks_ids[]', stock.id %>
+            <li>商品名 ｜ <%= stock.product_name %> ｜ </li>
+            <li>賞味期限 ｜ <%= stock.expiration %> ｜ </li>
+            <li>詳細・メモ ｜ <%= stock.detail %> ｜ </li>
+            <% if stock.open_date.present? %>
+            <li>開封日 ｜ <%= stock.open_date %> ｜ </li>
+            <% end %>
+            <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
+            <li><%= link_to '削除する', "/stocks", method: :delete %></li>
+          </label>
+        </ul>
+      <% end %>
+      <%= submit_tag "まとめて編集", :name => 'edit_all' %>
+      <%= submit_tag "一括削除", :name => 'delete_all' %>
+    <% end %>
+  </div>
+</div>
