@@ -65,6 +65,5 @@ class StocksController < ApplicationController
     params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date])
   end
 
-  # stocks_params.to_hash => {roduct_name: @product_name, expiration: @expiration, detail: @detail, open_date: @open_date}
 end
 
