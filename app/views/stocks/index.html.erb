@@ -1,6 +1,7 @@
 <div class="content">
   <div>
     <a href="/stocks/new">Get Stocked!</a>
+    <%=link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <%= form_tag("/confirm_stocks", method: :get) do %>
 
       <%= render partial: 'form.html.erb' %>

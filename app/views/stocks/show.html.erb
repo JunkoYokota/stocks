@@ -6,6 +6,6 @@
   <%= @stock.detail %>
   <%= @stock.open_date %>
 
-  <%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get%>
-  <%= link_to "削除する", "/stocks/#{@stock.id}", method: :delete %>
+  <%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get %>
+  <%= button_to "削除する", "/stocks/#{@stock.id}/", method: :delete %>
 </div>

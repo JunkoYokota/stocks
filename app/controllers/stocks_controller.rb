@@ -1,4 +1,7 @@
 class StocksController < ApplicationController
+  before_action :authenticate_user!
+  protect_from_forgery :except => [:destroy]
+
   def index
     @stocks = Stock.recent
   end
@@ -27,17 +30,18 @@ class StocksController < ApplicationController
 
   def update
     Stock.find(params[:id]).update(stock_params)
-    redirect_to stock_path
+    redirect_to stocks_path
   end
 
   def destroy
-    Stock.find(params[:id]).destroy
-    redirect_to stocks_path
+    stock = Stock.find(id: params[:id])
+    stock.destroy
+    # redirect_to stock_path
   end
 
   def confirm
     if params[:edit_all]
-      @stocks = Stock.where(id: params[:stocks_ids])
+      redirect_to test_path(stocks_ids: params[:stocks_ids])
     elsif params[:delete_all]
       @stocks = Stock.where(id: params[:stocks_ids])
         @stocks.each do |stock|
@@ -47,12 +51,16 @@ class StocksController < ApplicationController
     end
   end
   
-  def update_all
+  def test
     @stocks = Stock.where(id: params[:stocks_ids])
-       @stocks.each do |stock|
-         stocks.update!(stocks_params)
-         binding.pry
-       end
+  end
+
+  def update_all
+    stocks = params.permit!.to_h[:stocks]
+    stocks.each do |stock|
+      stock_db = Stock.find(stock[0])
+      stock_db.update!(stock[1])
+    end
     redirect_to stocks_path
   end
 
