@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   # before_action :authenticate_user!, only: [:index]
+  before_action :move_to_top, except: :top
 
   def top
     # if user_signed_in?
@@ -8,21 +9,28 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.recent
+    @stocks = Stock.where(user_id: current_user.id).recent
   end
 
   def new
     @stock = Stock.new
+    @user = current_user
+  end
+
+  def create
+    @stock = Stock.new(stock_params)
+    @stock.user_id = current_user.id
+    if
+      @stock.save
+      redirect_to stocks_path
+    else
+      render "new"
+    end
   end
 
   def back
     @stock = Stock.find(params[:ids])
     render :edit
-  end
-
-  def create
-    @stock = Stock.new(stock_params).save
-    redirect_to stocks_path
   end
 
   def show
@@ -46,7 +54,7 @@ class StocksController < ApplicationController
 
   def confirm
     if params[:edit_all]
-      redirect_to test_path(stocks_ids: params[:stocks_ids])
+      redirect_to confirm_update_path(stocks_ids: params[:stocks_ids])
     elsif params[:delete_all]
       @stocks = Stock.where(id: params[:stocks_ids])
         @stocks.each do |stock|
@@ -56,7 +64,7 @@ class StocksController < ApplicationController
     end
   end
   
-  def test
+  def confirm_update
     @stocks = Stock.where(id: params[:stocks_ids])
   end
 
@@ -71,11 +79,15 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date)
+    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date).merge(user_id: current_user.id)
   end
 
   def stocks_params
     params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date])
+  end
+
+  def move_to_top
+    redirect_to top_path unless user_signed_in?
   end
 
 end

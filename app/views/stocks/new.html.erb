@@ -1,9 +1,22 @@
 <ul>
   <%= form_with model: @stock do |form| %>
-    <li><%= form.label :product_name %><%= form.text_field :product_name, placeholder: '商品名' %></li>
-    <li><%= form.label :expiration %><%= form.date_select :expiration, placeholder: '賞味期限' %></li>
-    <li><%= form.label :detail %><%= form.text_area :detail, placeholder: '詳細・メモ' %></li>
-    <li><%= form.label :open_date %><%= form.date_select :open_date, placeholder: '開封日' %></li>
+    <li>
+      <%= form.label :product_name %>
+      <%= form.text_field :product_name, placeholder: '商品名' %>
+    </li>
+    <li>
+      <%= form.label :expiration %>
+      <%= form.date_field :expiration, placeholder: '賞味期限' %>
+    </li>
+    <li>
+      <%= form.label :detail %>
+      <%= form.text_area :detail, placeholder: '詳細・メモ' %>
+    </li>
+    <li>
+      <%= form.label :open_date %>
+      <%= form.date_field :open_date, placeholder: '開封日' %>
+    </li>
     <%= form.submit %>
   <% end %>
 </ul>
+<a href="/stocks/">Home!</a>
