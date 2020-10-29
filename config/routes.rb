@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {   registrations: 'users/registrations',
-    sessions: 'users/sessions' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'}
   resources :stocks
-  root to: 'stocks#index'
-  get 'top', to: 'stocks#top'
-  delete 'destroy', to: 'stocks#show'
+  root to: 'stocks#top'
+  # get 'users/sign_out', to: 'stocks#top'
 
  
   get 'confirm_stocks', to: 'stocks#confirm'

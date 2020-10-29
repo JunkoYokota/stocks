@@ -1,2 +1,7 @@
-<%= link_to "ログイン画面へ", new_user_session_path, method: :get %>
-<%= link_to "新規登録画面へ", new_user_registration_path, method: :get %>
+<% if user_signed_in? %>
+  <%= current_user.user_name %>さんとしてログイン中です。
+  <%= link_to  "home", stocks_path, method: :get %>
+<% elsif %>
+  <%= link_to "ログイン画面へ", '/users/sign_in', method: :get %>
+  <%= link_to "新規登録画面へ", '/users/sign_up', method: :get %>
+<% end %>

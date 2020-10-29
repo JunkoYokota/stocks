@@ -1,6 +1,11 @@
 class StocksController < ApplicationController
-  before_action :authenticate_user!
-  protect_from_forgery :except => [:destroy]
+  # before_action :authenticate_user!, only: [:index]
+
+  def top
+    # if user_signed_in?
+    #   render :index
+    # end
+  end
 
   def index
     @stocks = Stock.recent
@@ -34,7 +39,7 @@ class StocksController < ApplicationController
   end
 
   def destroy
-    stock = Stock.find(id: params[:id])
+    stock = Stock.find(params[:id])
     stock.destroy
     # redirect_to stock_path
   end
