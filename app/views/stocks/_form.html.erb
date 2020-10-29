@@ -1,15 +1,26 @@
       <% @stocks.each do |stock| %>
         <ul>
-          <label>
-            <%= check_box_tag 'stocks_ids[]', stock.id %>
-            <li>商品名 ｜ <%= stock.product_name %> ｜ </li>
-            <li>賞味期限 ｜ <%= stock.expiration %> ｜ </li>
-            <li>詳細・メモ ｜ <%= stock.detail %> ｜ </li>
-              <% if stock.open_date.present? %>
-              <li>開封日 ｜ <%= stock.open_date %> ｜ </li>
-              <% end %>
-            <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
-            <li><%= link_to '削除する', "/stocks/#{stock.id}/", method: :delete %></li>
-          </label>
+          <div class="row justify-content-between">
+
+            <label>
+              <div class="col-13">
+                <li class="h2"><%= check_box_tag 'stocks_ids[]', stock.id %> <%= stock.product_name %></li>
+                </br>
+                <li>賞味期限 ｜ <%= stock.expiration %> ｜ </li>
+                <% if stock.open_date.present? %>
+                <li>開封日 ｜ <%= stock.open_date %> ｜ </li>
+                <% end %>
+                </br>
+                <li>詳細・メモ ｜ <%= stock.detail %></li>
+              </div>
+            </label>
+            <div class="col-4 d-flex align-items-end">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <li><%= button_to '編集する', "/stocks/#{stock.id}/edit", method: :get, class: "btn btn-outline-info btn-sm"%></li>
+                <li><%= button_to '削除する', "/stocks/#{stock.id}/", method: :delete, class: "btn btn-outline-warning btn-sm"%></li>
+              </div>
+            </div>
+
+          </div>
         </ul>
       <% end %>
