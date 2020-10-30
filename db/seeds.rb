@@ -18,7 +18,9 @@ stocks_csv.each do |row|
     open_date: row['open_date'],
     detail: row['detail'],
     created_at: row['created_at'],
-    updated_at: row['updated_at'])
+    updated_at: row['updated_at'],
+    consumed: row['consumed'],
+    user_id: row['user_id'])
 end
 
 # users_csv = CSV.readlines("db/users.csv", headers: true)

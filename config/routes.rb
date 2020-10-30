@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'}
   resources :stocks
   root to: 'stocks#top'
+  get 'top', to: 'stocks#top'
   # get 'users/sign_out', to: 'stocks#top'
 
  
