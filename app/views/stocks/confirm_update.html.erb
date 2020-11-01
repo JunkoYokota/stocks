@@ -1,31 +1,47 @@
-<div class="content">
-  <div>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-center no-gutters">
+      <li class="col-sm-2 nav-item1 justify-content-start">
+      <i class="far fa-lightbulb"></i>
+      <span class="d-non d-sm-inline pl-1">まとめて編集中</span>
+      </li>
+    </ul>
+  </div>
+  <div class="panel_area">
+    <ul class="row no-gutters">
     <a href="/stocks/new">Get Stocked!</a>
     <%= form_with model: @stocks, url: update_all_path, method: :put do |form| %>
       <% @stocks.each do |stock| %>
         <%= fields_for 'stocks[]', stock do |field| %>
-        <ul>
-          <li>
-            <%= field.label :product_name %>
-            <%= field.text_field :product_name, placeholder: '商品名', value: stock.product_name %>
-          </li>
-          <li>
-            <%= field.label :expiration %>
-            <%= field.date_field :expiration, placeholder: '賞味期限', value: stock.expiration %>
-          </li>
-          <li>
-            <%= field.label :detail %>
-            <%= field.text_area :detail, placeholder: '詳細・メモ', value: stock.detail %>
-          </li>
-          <li>
-            <%= field.label :open_date %>
-            <%= field.date_field :open_date, placeholder: '開封日', value: stock.open_date %>
-          </li> 
-
-        </ul>
+          <div class="product_name">
+            <li>
+             <h2>
+                <%= field.label :product_name %>
+                <%= field.text_field :product_name, placeholder: '商品名', value: stock.product_name %>
+              </h2>
+            </li>
+          </div>
+          <div class="row justify-content-between border_bg">
+            <div class="col-10">
+              <li>
+                <%= field.label :expiration %>
+                <%= field.date_field :expiration, placeholder: '賞味期限', value: stock.expiration %>
+              </li>
+              <li>
+                <%= field.label :detail %>
+                <%= field.text_area :detail, placeholder: '詳細・メモ', value: stock.detail %>
+              </li>
+              <li>
+                <%= field.label :open_date %>
+                <%= field.date_field :open_date, placeholder: '開封日', value: stock.open_date %>
+              </li>
+            </div>
+          </div>
         <% end %>
       <% end %>
-      <%= form.submit '一括編集', :name => "update_all" %>
+    </ul>
+    <%= form.submit '一括編集', :name => "update_all" %>
     <% end %>
   </div>
 </div>
+<a href="/stocks/">Home!</a>
