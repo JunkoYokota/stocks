@@ -9,7 +9,13 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.where(user_id: current_user.id).recent
+    @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
+  end
+  def near
+    @stocks_near = Stock.where(user_id: current_user.id).stocks_near.recent
+  end
+  def expire
+    @stocks_expire = Stock.where(user_id: current_user.id).stocks_expire.recent
   end
 
   def new
@@ -63,7 +69,7 @@ class StocksController < ApplicationController
       redirect_to stocks_path
     end
   end
-  
+
   def confirm_update
     @stocks = Stock.where(id: params[:stocks_ids])
   end

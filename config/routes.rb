@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   get 'top', to: 'stocks#top'
   # get 'users/sign_out', to: 'stocks#top'
 
- 
+
   get 'confirm_stocks', to: 'stocks#confirm'
   get 'confirm_update', to: 'stocks#confirm_update'
   put 'update_all', to: 'stocks#update_all'
   delete 'delete_all', to: 'stocks#delete_all'
+
+  get 'index_near', to: 'stocks#near'
+  get 'index_expire', to: 'stocks#expire'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

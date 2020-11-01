@@ -5,71 +5,16 @@ a:link{
   text-decoration: none;
 }
 a:hover{
-  background-color: #336600;
+  text-decoration: none;
 }
-ul{
-  border: 2px skyblue dashed;
-  display: block
-}
-ul li {
-  list-style: none;
+.no-gutters {
+  margin: 0;
   padding: 0;
+}
+.no-gutters　> .col,
+.no-gutters　> [class*="col-"] {
   margin: 0;
-  display: inline;
-  border-bottom: solid 3px #87CEFA;
-}
-li{
-  font-size: 11px;
-}
-
-.title{
-  display: block;
-  height: 30px;
-  width: 690px;
-  margin: 0;
-  padding: 0 5px;
-  background-color: #99cccc;
-}
-.title h1{
-  width: 160px;
-  padding: 0 0 0 15px;
-  line-height: 30px;
-  float: left;
-}
-
-.title p{
-  width: 200px;
-  margin: 0;
-  padding: 10px 0 0 0;
-  display: inline;
-  font-size: 12px;
-  text-align: right;
-  float: right;
-  line-height: 20px;
-}
-
-.user_nav{
-  display: block;
-  width: 640px;
-  margin: 0;
-  padding: 1px 5px;
-  float: left;
-  text-align: center;
-  background-color: #ccff66;
-}
-.user_nav ul{
-  width: 350px;
-  margin: 0;
-  display: flex;
-  float: right;
-  justify-content: center;
-}
-.user_nav li{
-  width: 100px;
-  margin: 2px 5px;
-  border: 1px solid;
-  font-size: 10px;
-  background-color: #999900;
+  padding: 0;
 }
 .container{
   width: 700px;
@@ -77,47 +22,256 @@ li{
   background-color: #ccffcc;
   display: block;
 }
-
-.edit{
-  height: 30px;
-  width: 290px;
-  margin: 0 0 0 5px;
-  text-align: center;
-  float: right;
-  font-size: 13px;
-}
-.edit ul{
-  width: 340px;
-  float: right;
-  }
-.edit li{
-  width: 90px;
-  margin: 2px;
+// タブエリア
+.tab_area{
   display: block;
-  float: right;
-  background-color: #999900;
-  border: 1px solid;
+}
+.nav{
 
-  }
-
-.footer{
-  width: 640px;
-  height: 30px;
-  padding: 3px 5px 0;
-  border-top: 7px solid #ccffcc;
-  clear: left;
-  background-color: #999999;
+}
+.nav .nav-item{
+  margin: 0 8px 0;
+  display: inline-block;
+  color: #fff;
+  background :#90C9CF;
+  text-align: center;
+  transition: ease 0.2s;
+  border: 4px solid #90C9CF;
+  border-bottom: none;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
+  transform: translateY(8px);
+  position: relative;
+}
+.nav .nav-item a{
+  display: inline-block;
+  padding: 5px 0 7px;
+  color: #fff;
+  font-size: 13px; cursor:pointer;
+  text-decoration: none;
 }
 
-.footer nav{
-  width: 300px;
-  float: right;
-}
-.pagination{
-  text-align: right;
-  font-size: 13px;
+.nav-item1{
+  margin-right: 5px;
+  display: inline-block;
+  padding: 7px 0 2px;
+  text-align: center;
+  font-size:13px;
+  color:#000;
+  background:#fff;
+  border:4px solid #90C9CF;
+  border-bottom:none;
+  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
+  transform:translateY(6px);
+  position:relative;
+  z-index: 1;
 }
 
-.form{
-  margin: 0 70px 0;
+.nav a:last-of-type{
+  margin-right:0;
 }
+.nav a:hover{
+  background: #afd6d8;
+}
+.panel_area{
+  width:100%;
+  background:#fff;
+  padding:15px 10px 10px 2px;
+  border:4px solid #90C9CF;
+  border-radius: 2% 12% 2% 8%/ 25% 8% 22% 18%;
+  position:relative;
+  z-index:0;
+}
+
+.product_name{
+  display: inline-block;
+  padding-left: 8px;
+  width: 100%;
+  background-color: #ccffcc;
+}
+.product_name h2{
+  display: inline;
+  vertical-align: text-top;
+  padding-left: 10px;
+}
+h2 .check_box{
+  position: relative;
+  bottom: 6px;
+  left: 3px;
+}
+.panel_area .col-12{
+  background: linear-gradient(#fff 95%, #87CEFA 5%);
+  background-size: 70% 23px;
+}
+.border_bg{
+  padding: 0 0 0 15px;
+}
+
+.panel_area ul{
+  margin: 10px 10% 0 7%;
+  padding: 5px 12px 0 10px;
+  border: 2px skyblue dashed;
+  display: block;
+}
+.panel_area ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+.panel_area li{
+  font-size: 11px;
+}
+
+
+.btn-group{
+  text-align: left;
+  margin-left: 10%;
+}
+.btn-group a{
+  color:#fff;
+  width:80px;
+  margin: 10px 0;
+  display:inline-block;
+  text-align:center;
+  padding:8px 0 8px;
+  font-size:13px; cursor:pointer;
+  transition:ease 0.2s;
+  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
+  transform:translateY(8px);
+  position:relative;
+}
+.btn-group .edit a{
+  background: #009C95;
+  border:4px solid #009C95;
+  border-bottom:none;
+}
+.btn-group .delete a{
+  background:#DD9BA5;
+  border:4px solid #DD9BA5;
+  border-bottom:none;
+}
+.btn-group a:hover{
+  background: #afd6d8;
+  text-decoration: none;
+}
+
+
+// .tab_panel{
+  // opacity:0.3;
+  // display:none;
+// }
+
+
+// .title{
+//   display: block;
+//   height: 30px;
+//   width: 690px;
+//   margin: 0;
+//   padding: 0 5px;
+//   background-color: #99cccc;
+// }
+
+// .title h1{
+//   width: 160px;
+//   padding: 0 0 0 15px;
+//   line-height: 30px;
+//   float: left;
+// }
+
+// .title p{
+//   width: 200px;
+//   margin: 0;
+//   padding: 10px 0 0 0;
+//   display: inline;
+//   font-size: 12px;
+//   text-align: right;
+//   float: right;
+//   line-height: 20px;
+// }
+
+// .user_nav{
+//   display: block;
+//   width: 640px;
+//   margin: 0;
+//   padding: 1px 5px;
+//   float: left;
+//   text-align: center;
+//   background-color: #ccff66;
+// }
+// .user_nav ul{
+//   width: 350px;
+//   margin: 0;
+//   display: flex;
+//   float: right;
+//   justify-content: center;
+// }
+// .user_nav li{
+//   width: 100px;
+//   margin: 2px 5px;
+//   border: 1px solid;
+//   font-size: 10px;
+//   background-color: #999900;
+// }
+
+
+// .edit{
+//   height: 30px;
+//   width: 290px;
+//   margin: 0 0 0 5px;
+//   text-align: center;
+//   float: right;
+//   font-size: 13px;
+// }
+// .edit ul{
+//   width: 340px;
+//   float: right;
+//   }
+// .edit li{
+//   width: 90px;
+//   margin: 2px;
+//   display: block;
+//   float: right;
+//   background-color: #999900;
+//   border: 1px solid;
+//   }
+
+// .footer{
+//   width: 640px;
+//   height: 30px;
+//   padding: 3px 5px 0;
+//   border-top: 7px solid #ccffcc;
+//   clear: left;
+//   background-color: #999999;
+// }
+
+// .footer nav{
+//   width: 300px;
+//   float: right;
+// }
+// .pagination{
+//   text-align: right;
+//   font-size: 13px;
+// }
+
+// .form{
+//   margin: 0 70px 0;
+// }
+
+// .tab_wrap{
+//   width:470px;
+//   margin:80px auto;
+// }
+// dl div{
+//   border-bottom: solid 2px #87CEFA;
+// }
+// dt, dd{
+//   display: inline;
+// }
+// dt::after{
+//   content: " | ";
+// }
+// dd{
+//   margin: 0;
+//   font-weight: bold;
+// }
+

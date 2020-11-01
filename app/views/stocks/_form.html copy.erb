@@ -1,0 +1,23 @@
+      <% @stocks.each do |stock| %>
+        <ul>
+          <div class="row justify-content-between">
+            <label class="justify-content-start">
+              <div class="col-12">
+                <li><h2><%= check_box_tag 'stocks_ids[]', stock.id %> <%= stock.product_name %></h2></li>
+                <li>賞味期限 ｜ <%= stock.expiration %> ｜ </li>
+                <% if stock.open_date.present? %>
+                <li>開封日 ｜ <%= stock.open_date %> ｜ </li>
+                <% end %>
+                </br>
+                <li>詳細・メモ ｜ <%= stock.detail %></li>
+              </div>
+            </label>
+            <div class="col-1 justify-content-end d-flex align-items-end">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <li><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
+                <li><%= link_to '削除する', "/stocks/#{stock.id}/", method: :delete %></li>
+              </div>
+            </div>
+          </div>
+        </ul>
+      <% end %>
