@@ -2,6 +2,7 @@
 <% if user_signed_in? %>
   <%= current_user.user_name %>さんとしてログイン中です。
   <%= link_to  "home", stocks_path, method: :get %>
+  <%= link_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get %>
 <% elsif %>
   <%= link_to "ログイン画面へ", '/users/sign_in', method: :get %>
   <%= link_to "新規登録画面へ", '/users/sign_up', method: :get %>
