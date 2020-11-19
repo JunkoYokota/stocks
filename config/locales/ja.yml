@@ -1,5 +1,10 @@
 ja:
   activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        user_name: ユーザー名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

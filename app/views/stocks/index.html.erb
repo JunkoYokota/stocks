@@ -20,9 +20,9 @@
       <span class="d-non d-sm-inline pl-1">賞味期限間近</span></a>
       </li>
       <li class="col-sm-2 nav-item justify-content-start">
-      <a href="/index_expire">
-      <i class="fas fa-exclamation-triangle"></i>
-      <span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a>
+        <a href="/index_expire">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a>
       </li>
     </ul>
   </div>
@@ -30,8 +30,9 @@
     <%= form_tag("/confirm_stocks", method: :get) do %>
       <%= render partial: 'form.html.erb' %>
       <div class="btn-group" role="group" aria-label="Basic example">
-      <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-info" %>
-      <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-warning" %>
+        <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-outline-info" %>
+        <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-outline-warning" %>
       </div>
     <% end %>
   </div>
+

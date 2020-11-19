@@ -1,11 +1,28 @@
+<div class="top">
+  <div class="row justify-content-center">
+  <h2>このページはサンプルです。</h2>
+  <% if user_signed_in? %>
+    <div class="col-12 text-center">
+      <p>現在は<%= current_user.user_name %>さんとしてログイン中です。</p>
+      <%= link_to  "Welcome to your home!", stocks_path, method: :get, :class => "btn btn-info" %>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <%= link_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn btn-info" %>
+      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
+    </div>
+  <% elsif %>
+    <div class="col-9 d-flex justify-content-center">
+      <%= link_to "ログイン画面へ", '/users/sign_in', method: :get, :class => "btn btn-info" %>
+    </div>
+    <div class="col-9 d-flex justify-content-center">
+      <%= link_to "新規登録画面へ", '/users/sign_up', method: :get, :class => "btn btn-info" %>
+    </div>
+  <% end %>
+  </div>
+</div>
 
-<% if user_signed_in? %>
-  <%= current_user.user_name %>さんとしてログイン中です。
-  <%= link_to  "home", stocks_path, method: :get %>
-  <%= link_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get %>
-<% elsif %>
-  <%= link_to "ログイン画面へ", '/users/sign_in', method: :get %>
-  <%= link_to "新規登録画面へ", '/users/sign_up', method: :get %>
-<% end %>
 
-詳細・メモ には販売先、購入店舗などの次回購入時に役に立つ情報等を入力してください。
+<div class="sample">
+  <%= render partial: 'sample.html.erb' %>
+</div> 
+

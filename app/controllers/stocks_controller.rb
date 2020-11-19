@@ -11,11 +11,17 @@ class StocksController < ApplicationController
   def index
     @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
   end
+
+  # def top
+  #   @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
+  # end
+
   def near
-    @stocks_near = Stock.where(user_id: current_user.id).stocks_near.recent
+    @stocks = Stock.where(user_id: current_user.id).stocks_near.recent
   end
+
   def expire
-    @stocks_expire = Stock.where(user_id: current_user.id).stocks_expire.recent
+    @stocks = Stock.where(user_id: current_user.id).stocks_expire.recent
   end
 
   def new
