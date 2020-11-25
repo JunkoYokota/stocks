@@ -1,26 +1,60 @@
-<h2>ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="col-9">
+  <h3><a href="#">Stocked UP!</a></h3>
+</div>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-center no-gutters">
+      <li class="col-sm-2 nav-item1 justify-content-start">
+      <i class="far fa-lightbulb"></i>
+      <span class="d-non d-sm-inline pl-1">あなたの在庫</span>
+      </li>
+      <li class="col-sm-2 nav-item justify-content-start">
+      <a href="/index_near">
+      <i class="far fa-bell"></i>
+      <span class="d-non d-sm-inline pl-1">賞味期限間近</span></a>
+      </li>
+      <li class="col-sm-2 nav-item justify-content-start">
+        <a href="/index_expire">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a>
+      </li>
+    </ul>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="user_panel_area">
+    <ul class="row justify-content-center no-gutters">
+      <div class="col-11">
+        <div class="product_name">
+          <li>
+            <h3>ログインはこちら</h3>
+          </li>
+        </div>
+        <div class="row justify-content-between border_bg">
+          <div class="col-10">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="box-email">
+              <li><%= f.label :email %></li>
+              <li><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'email' %></li>
+            </div>
+            <div class="box-password">
+              <li><%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "current-password", class: 'pass' %></li>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <li><%= f.check_box :remember_me %>
+                <%= f.label :remember_me %></li>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "ログイン", class: 'login' %>
+        </div>
+      </div>
+    </ul>   
+    <% end %>
+    <div class="col-9">
+      <%= render "users/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

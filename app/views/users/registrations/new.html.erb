@@ -1,34 +1,67 @@
-<h2>ユーザー登録</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true %>
+<div class="col-9">
+  <h3><a href="#">Stocked UP!</a></h3>
+</div>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-center no-gutters">
+      <li class="col-sm-2 nav-item1 justify-content-start">
+      <i class="far fa-lightbulb"></i>
+      <span class="d-non d-sm-inline pl-1">あなたの在庫</span>
+      </li>
+      <li class="col-sm-2 nav-item justify-content-start">
+      <a href="/index_near">
+      <i class="far fa-bell"></i>
+      <span class="d-non d-sm-inline pl-1">賞味期限間近</span></a>
+      </li>
+      <li class="col-sm-2 nav-item justify-content-start">
+        <a href="/index_expire">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a>
+      </li>
+    </ul>
   </div>
+  <div class="user_panel_area">
+    <ul class="row justify-content-center no-gutters">
+      <div class="col-11">
+        <div class="product_name">
+          <li>
+            <h3>ユーザー登録</h3>
+          </li>
+        </div>
+        <div class="row justify-content-between border_bg">
+          <div class="col-10">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+            <div class="box-name">
+              <%= f.label :user_name %><br />
+              <%= f.text_field :user_name, autofocus: true %>
+            </div>
+            <div class="box-email">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="box-password">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以内)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+            <div class="box-password">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "Sign up", class: 'login' %>
+        </div>
+      </div>
+    </ul>   
+    <% end %>
+    <div class="col-9">
+      <%= render "users/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以内)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

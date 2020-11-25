@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.email{
+	width: 150px;
+}
+.pass{
+	width: 150px;
+}
