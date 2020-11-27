@@ -1,4 +1,4 @@
-
+<div class="header">
   <div class="row">
     <div class="col-9">
       <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
@@ -7,9 +7,10 @@
       <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
     </div>
   </div>
- <div class="wrap">
+</div>
+<div class="wrap">
   <div class="tab_area">
-    <ul class="row nav justify-content-center no-gutters">
+    <ul class="row nav justify-content-end no-gutters">
       <li class="col-sm-2 nav-item1 justify-content-start">
       <i class="far fa-lightbulb"></i>
       <span class="d-non d-sm-inline pl-1">あなたの在庫</span>
@@ -35,4 +36,5 @@
       </div>
     <% end %>
   </div>
+</div>
 

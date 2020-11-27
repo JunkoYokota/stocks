@@ -9,8 +9,15 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
+    @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(5)
+    # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
   end
+
+# 検索用
+# def index
+#   @q = Stocks.ransack(params[:q])
+#   @stocks = @q.result.page(params[:page]).per(params[:display_number])
+# end
 
   # def top
   #   @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent

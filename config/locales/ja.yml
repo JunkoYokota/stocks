@@ -1,8 +1,14 @@
 ja:
   activerecord:
     models:
+      stock: 在庫
       user: ユーザー
     attributes:
+      stock:
+        product_name: 商品名
+        expiration: 賞味期限
+        open_date: 開封日
+        detail: 詳細/備考
       user:
         user_name: ユーザー名
     errors:
