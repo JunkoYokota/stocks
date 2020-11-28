@@ -18,13 +18,14 @@
     </ul>
   </div>
   <div class="user_panel_area">
+  <%= render 'error_form' %>
     <ul class="row no-gutters">
       <div class="col-11">
-        <%= form_with model: @stock do |form| %>
+        <%= form_with model: @stock, local: true do |form| %>
           <div class="product_name">
             <li>
               <h2><%= form.text_field :product_name, placeholder: '商品名', value: @stock.product_name %></h2>
-              <a href="#" class="btn-sticky"><i class="far fa-star"></i>お気に入り</a>
+              <a href="#" class="btn-sticky"><i class="far fa-heart"></i>お気に入り</a>
               <a href="#" class="btn-sticky"><i class="far fa-star"></i>注目</a>
             </li>
           </div>
@@ -41,6 +42,10 @@
               <li>
                 <%= form.label :detail %><br />
                 <%= form.text_area :detail, placeholder: '詳細・メモ', value: @stock.detail %>
+              </li><br />
+              <li>
+                <%= form.label :content %><br />
+                <%= form.rich_text_area :content, placeholder: '詳細・メモ', value: @stock.content %>
               </li>
               <%= form.submit "更新する", class: 'btn-usr' %>
             </div>

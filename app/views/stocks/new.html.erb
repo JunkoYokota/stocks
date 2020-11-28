@@ -1,40 +1,58 @@
- <div class="wrap">
+<div class="header">
+  <div class="row">
+    <div class="col-9">
+      <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
+    </div>
+    <div class="col-3">
+      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
+    </div>
+  </div>
+</div>
+<div class="wrap">
   <div class="tab_area">
-    <ul class="row nav justify-content-center no-gutters">
+    <ul class="row nav justify-content-end no-gutters">
       <li class="col-sm-2 nav-item1 justify-content-start">
       <i class="far fa-lightbulb"></i>
       <span class="d-non d-sm-inline pl-1">記録中</span>
       </li>
     </ul>
   </div>
-  <div class="panel_area">
+  <div class="user_panel_area">
+    <%= render 'error_form' %>
     <ul class="row no-gutters">
-      <%= form_with model: @stock do |form| %>
-        <div class="product_name">
-        <li>
-          <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
-        </li>
-        </div>
-        <div class="row justify-content-between border_bg">
-          <div class="col-10">
+      <div class="col-11">
+        <%= form_with model: @stock, local: true do |form| %>
+          <div class="product_name">
             <li>
-              <%= form.label :expiration %>
-              <%= form.date_field :expiration, placeholder: '賞味期限' %>
+              <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
+              <a href="#" class="btn-sticky"><i class="far fa-heart"></i>お気に入り</a>
+              <a href="#" class="btn-sticky"><i class="far fa-star"></i>注目</a>
             </li>
-            <li>
-              <%= form.label :open_date %>
-              <%= form.date_field :open_date, placeholder: '開封日' %>
-            </li>
-            <li>
-              <%= form.label :detail %>
-              <%= form.text_area :detail, placeholder: '詳細・メモ' %>
-            </li>
-            <%= form.submit %>
           </div>
-        </div>
-      <% end %>
+          <div class="row justify-content-between border_bg">
+            <div class="col-10">
+              <li>
+                <%= form.label :expiration %>
+                <%= form.date_field :expiration, placeholder: '賞味期限' %>
+              </li><br />
+              <li>
+                <%= form.label :open_date %>
+                <%= form.date_field :open_date, placeholder: '開封日' %>
+              </li><br />
+              <li>
+                <%= form.label :detail %><br />
+                <%= form.text_area :detail, placeholder: '詳細・メモ' %>
+              </li><br />
+              <li>
+                <%= form.label :content %><br />
+                <%= form.rich_text_area :content, placeholder: '詳細・メモ' %>
+              </li>
+              <%= form.submit "登録する", class: 'btn-usr' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </ul>
   </div>
 </div>
 <a href="/stocks/">Home!</a>
-

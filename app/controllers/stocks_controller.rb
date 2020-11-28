@@ -47,10 +47,10 @@ class StocksController < ApplicationController
     end
   end
 
-  def back
-    @stock = Stock.find(params[:ids])
-    render :edit
-  end
+  # def back
+  #   @stock = Stock.find(params[:ids])
+  #   render :edit
+  # end
 
   def show
     @stock = Stock.find(params[:id])
@@ -61,8 +61,13 @@ class StocksController < ApplicationController
   end
 
   def update
-    Stock.find(params[:id]).update(stock_params)
-    redirect_to stocks_path
+    @stock = Stock.find(params[:id])
+    if
+      @stock.update(stock_params)
+      redirect_to stocks_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
@@ -98,11 +103,11 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date).merge(user_id: current_user.id)
+    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :content).merge(user_id: current_user.id)
   end
 
   def stocks_params
-    params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date])
+    params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :content])
   end
 
   def move_to_top

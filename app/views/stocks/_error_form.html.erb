@@ -1,0 +1,9 @@
+<% if @stock.errors.any? %>
+  <div class = "alert">
+    <ul>
+      <% @stock.errors.full_messages.each do |message| %>
+        <li><i class="fas fa-exclamation"></i><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

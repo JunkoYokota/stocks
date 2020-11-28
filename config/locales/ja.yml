@@ -1,22 +1,29 @@
 ja:
   activerecord:
     models:
-      stock: 在庫
-      user: ユーザー
+      stock:
+      user:
     attributes:
       stock:
         product_name: 商品名
         expiration: 賞味期限
         open_date: 開封日
         detail: 詳細/備考
+        content: 詳細/備考
       user:
         user_name: ユーザー名
     errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+      models:
+        stock:
+          attributes:
+            base:
+              content_attachable_byte_size_is_oversize: 添付ファイルは%{max_content_attachment_mega_byte_size}MB以下にしてください。[%{bytes}/%{max_bytes}]
+              attachment_count_is_too_many: 添付ファイルは%{max_count}つまでです
+    messages:
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+        has_one: "%{record}が存在しているので削除できません"
+        has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
     - 日
@@ -215,3 +222,19 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: ""
+          one: "<strong>1-1</strong>/1件中"
+          other: "<strong>1-%{count}</strong>/%{count}件中"
+      more_pages:
+        display_entries: "<strong>%{first}-%{last}</strong>/%{total}件中"

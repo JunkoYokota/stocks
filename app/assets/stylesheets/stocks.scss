@@ -18,7 +18,7 @@ a:hover{
   padding: 0;
 }
 .container{
-  width: 700px;
+  min-width: 850px;
   margin: 0;
   background-color: #ccffcc;
   display: block;
@@ -130,18 +130,18 @@ a:hover{
   bottom: 6px;
   left: 3px;
 }
+.panel_area ul{
+  margin: 10px 10% 0 7%;
+  padding: 5px 12px 0 10px;
+  border: 2px #009C95 dashed;
+  display: block;
+}
 .panel_area .col-12{
   background: linear-gradient(#fff 95%, #87CEFA 5%);
   background-size: 70% 23px;
 }
 .border_bg{
   padding: 0 0 0 15px;
-}
-.panel_area ul{
-  margin: 10px 10% 0 7%;
-  padding: 5px 12px 0 10px;
-  border: 2px #009C95 dashed;
-  display: block;
 }
 .panel_area ul li {
   list-style: none;
@@ -226,6 +226,12 @@ a:hover{
   border: 2px #009C95 dashed;
   display: block;
 }
+.user_panel_area .col-11{
+  background: linear-gradient(#fff 98%, #87CEFA 2%);
+  background-size: 100% 28px;
+  margin: auto;
+  width: 80%;
+}
 .user_panel_area ul li {
   list-style: none;
   padding: 0;
@@ -245,12 +251,7 @@ a:hover{
 .product_name i{
   padding-left: 2px;
 }
-.user_panel_area .col-11{
-  background: linear-gradient(#fff 98%, #87CEFA 2%);
-  background-size: 100% 28px;
-  margin: auto;
-  width: 70%;
-}
+
 .user_panel_area .col-10{
   padding: 22px 0 0 25px;
 }
@@ -299,6 +300,11 @@ a:hover{
 .btn-usr:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
                6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+.alert i{
+  font-size: 20px;
+  padding: 13px;
+  color: red;
 }
 
 
