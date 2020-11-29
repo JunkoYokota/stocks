@@ -26,7 +26,7 @@
             <li>
               <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
               <a href="#" class="btn-sticky"><i class="far fa-heart"></i>お気に入り</a>
-              <a href="#" class="btn-sticky"><i class="far fa-star"></i>注目</a>
+              <a href="#" class="btn-sticky"><i class="far fa-star"></i>ふせん</a>
             </li>
           </div>
           <div class="row justify-content-between border_bg">
@@ -41,11 +41,11 @@
               </li><br />
               <li>
                 <%= form.label :detail %><br />
-                <%= form.text_area :detail, placeholder: '詳細・メモ' %>
+                <%= form.text_area :detail, placeholder: 'メーカー・購入店舗等' %>
               </li><br />
               <li>
                 <%= form.label :content %><br />
-                <%= form.rich_text_area :content, placeholder: '詳細・メモ' %>
+                <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで' %>
               </li>
               <%= form.submit "登録する", class: 'btn-usr' %>
             </div>

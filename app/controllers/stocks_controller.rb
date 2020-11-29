@@ -10,6 +10,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(5)
+
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
   end
 
@@ -24,11 +25,11 @@ class StocksController < ApplicationController
   # end
 
   def near
-    @stocks = Stock.where(user_id: current_user.id).stocks_near.recent
+    @stocks = Stock.where(user_id: current_user.id).stocks_near.recent.page(params[:page]).per(5)
   end
 
   def expire
-    @stocks = Stock.where(user_id: current_user.id).stocks_expire.recent
+    @stocks = Stock.where(user_id: current_user.id).stocks_expire.recent.page(params[:page]).per(5)
   end
 
   def new

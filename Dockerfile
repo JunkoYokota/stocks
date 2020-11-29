@@ -22,8 +22,10 @@ RUN mkdir $APP_PATH
 WORKDIR $APP_PATH
 COPY Gemfile "${APP_PATH}/Gemfile"
 COPY Gemfile.lock "${APP_PATH}/Gemfile.lock"
-RUN bundle install
+RUN gem install bundler
+RUN bundle _2.1.4_ install
 COPY . /app
+
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

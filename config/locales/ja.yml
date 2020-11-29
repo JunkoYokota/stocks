@@ -8,7 +8,7 @@ ja:
         product_name: 商品名
         expiration: 賞味期限
         open_date: 開封日
-        detail: 詳細/備考
+        detail: メーカー・購入店舗等
         content: 詳細/備考
       user:
         user_name: ユーザー名

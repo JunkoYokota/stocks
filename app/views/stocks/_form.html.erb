@@ -13,6 +13,7 @@
           <h2><%= stock.product_name %></h2>
           <div class="justify-content-end">
             <a href="#" class="btn-sticky"><i class="far fa-star"></i>お気に入り</a>
+            <a href="#" class="btn-sticky"><i class="far fa-star"></i>ふせん</a>
           </div>
         </li>
       </div>
@@ -22,7 +23,7 @@
           <% if stock.open_date.present? %>
           <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
           <% end %>
-          <li> ｜ 詳細・メモ ｜ <%= stock.detail %></li>
+          <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li>
           <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
         </div>
         <div class="col-1 justify-content-end d-flex align-items-end">

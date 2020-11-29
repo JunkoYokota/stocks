@@ -1,0 +1,2 @@
+"id","email","user_name","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","created_at","updated_at"
+1,"junwithpma@hotmail.com","jun","$2a$12$jECG3EFatQ.C5iWnVCwiVOKQ8VsbADxIFKfGaf9B6uo2enH9OpDEy",NULL,NULL,NULL,"2020-11-29 00:46:54.693252","2020-11-29 00:46:54.693252"

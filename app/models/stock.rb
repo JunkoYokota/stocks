@@ -13,17 +13,14 @@ class Stock < ApplicationRecord
   ONE_KILOBYTE = 1024
   MEGA_BYTES = 4
   MAX_CONTENT_ATTACHMENT_BYTE_SIZE = MEGA_BYTES * 1_000 * ONE_KILOBYTE
-
   MAX_CONTENT_ATTACHMENTS_COUNT = 2
 
   private
-
   def validate_content_length
     if content.to_plain_text.length > MAX_CONTENT_LENGTH
       errors.add(:content, :too_long)
     end
   end
-
   def validate_content_attachment_byte_size
     content.body.attachables.grep(ActiveStorage::Blob).each do |attachable|
       if attachable.byte_size > MAX_CONTENT_ATTACHMENT_BYTE_SIZE
@@ -37,7 +34,6 @@ class Stock < ApplicationRecord
       end
     end
   end
-
   def validate_content_attachments_count
     if content.body.attachables.grep(ActiveStorage::Blob).count >
       MAX_CONTENT_ATTACHMENTS_COUNT
@@ -48,7 +44,4 @@ class Stock < ApplicationRecord
         )
     end
   end
-
-
-
 end
