@@ -1,8 +1,10 @@
 class StocksController < ApplicationController
   # before_action :authenticate_user!, only: [:index]
   before_action :move_to_top, except: :top
+  
 
   def top
+    @stocks = Stock.find(2,3,12)
     # if user_signed_in?
     #   render :index
     # end
@@ -10,19 +12,7 @@ class StocksController < ApplicationController
 
   def index
     @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(5)
-
-    # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
   end
-
-# 検索用
-# def index
-#   @q = Stocks.ransack(params[:q])
-#   @stocks = @q.result.page(params[:page]).per(params[:display_number])
-# end
-
-  # def top
-  #   @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
-  # end
 
   def near
     @stocks = Stock.where(user_id: current_user.id).stocks_near.recent.page(params[:page]).per(5)
@@ -47,11 +37,6 @@ class StocksController < ApplicationController
       render "new"
     end
   end
-
-  # def back
-  #   @stock = Stock.find(params[:ids])
-  #   render :edit
-  # end
 
   def show
     @stock = Stock.find(params[:id])
@@ -101,6 +86,7 @@ class StocksController < ApplicationController
     end
     redirect_to stocks_path
   end
+
 
   private
   def stock_params
