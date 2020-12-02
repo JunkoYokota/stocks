@@ -4,6 +4,7 @@ class StocksController < ApplicationController
   
 
   def top
+    @stocks = Stock.find(2,3,12)
     # if user_signed_in?
     #   render :index
     # end
