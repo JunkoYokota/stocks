@@ -1,0 +1,40 @@
+<%
+=begin%>
+<%= hidden_field_tag :display_number, params[:display_number] %>
+<span> 表示件数<%= select_tag :change_display_number, options_for_select([5, 10, 15, 20], params[:display_number]) %></span> 件
+<%
+=end%>
+
+<% @stocks.each do |stock| %>
+<ul class="row no-gutters">
+  <label class="col-12">
+    <div class="product_name">
+      <li>
+        <div class="sticky">
+          <a href="#" class="btn-sticky-1"><i class="far fa-star"></i>お気に入り</a>
+          <a href="#" class="btn-sticky-2"><i class="far fa-star"></i>ふせん</a>
+        </div>
+        <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>
+        <h2><%= stock.product_name %></h2>
+      </li>
+    </div>
+    <div class="row justify-content-between border_bg">
+      <div class="col-10">
+        <li> ｜ 賞味期限 ｜ <%= stock.expiration %> ｜ </li><br />
+        <% if stock.open_date.present? %>
+        <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
+        <% end %>
+        <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li>
+        <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
+      </div>
+      <div class="col-1 justify-content-end d-flex align-items-end">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <li class="edit"><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
+          <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :delete %></li>
+        </div>
+      </div>
+    </div>
+  </label>
+</ul>
+<% end %>
+<%= paginate @stocks %>

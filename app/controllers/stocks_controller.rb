@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
   # before_action :authenticate_user!, only: [:index]
   before_action :move_to_top, except: :top
+  
 
   def top
     # if user_signed_in?
@@ -19,10 +20,6 @@ class StocksController < ApplicationController
 #   @q = Stocks.ransack(params[:q])
 #   @stocks = @q.result.page(params[:page]).per(params[:display_number])
 # end
-
-  # def top
-  #   @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent
-  # end
 
   def near
     @stocks = Stock.where(user_id: current_user.id).stocks_near.recent.page(params[:page]).per(5)
@@ -102,6 +99,7 @@ class StocksController < ApplicationController
     redirect_to stocks_path
   end
 
+
   private
   def stock_params
     params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :content).merge(user_id: current_user.id)
@@ -114,6 +112,12 @@ class StocksController < ApplicationController
   def move_to_top
     redirect_to top_path unless user_signed_in?
   end
+
+  def content
+
+  end
+
+
 
 end
 

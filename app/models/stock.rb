@@ -9,11 +9,15 @@ class Stock < ApplicationRecord
   scope :stocks_expire, -> { where('expiration <= ?', Date.today) }
   belongs_to :user
 
+
   MAX_CONTENT_LENGTH = 50
   ONE_KILOBYTE = 1024
   MEGA_BYTES = 4
   MAX_CONTENT_ATTACHMENT_BYTE_SIZE = MEGA_BYTES * 1_000 * ONE_KILOBYTE
   MAX_CONTENT_ATTACHMENTS_COUNT = 2
+
+  # images = content.embeds.blobs
+  images = ActiveStorage::Blob
 
   private
   def validate_content_length

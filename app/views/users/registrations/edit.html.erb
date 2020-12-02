@@ -2,24 +2,7 @@
   <h3><a href="#">Stocked UP!</a></h3>
 </div>
 <div class="wrap">
-  <div class="tab_area">
-    <ul class="row nav justify-content-center no-gutters">
-      <li class="col-sm-2 nav-item1 justify-content-start">
-      <i class="far fa-lightbulb"></i>
-      <span class="d-non d-sm-inline pl-1">あなたの在庫</span>
-      </li>
-      <li class="col-sm-2 nav-item justify-content-start">
-      <a href="/index_near">
-      <i class="far fa-bell"></i>
-      <span class="d-non d-sm-inline pl-1">賞味期限間近</span></a>
-      </li>
-      <li class="col-sm-2 nav-item justify-content-start">
-        <a href="/index_expire">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a>
-      </li>
-    </ul>
-  </div>
+  <%= render 'stocks/layouts/tab' %>
   <div class="user_panel_area">
     <ul class="row justify-content-center no-gutters">
       <div class="col-11">

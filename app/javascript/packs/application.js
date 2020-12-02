@@ -9,6 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("bootstrap")
+require.context('../images', true)
+
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -18,7 +21,9 @@ require("bootstrap")
 // const imagePath = (name) => images(name, true)
 // 
 import 'bootstrap'
-import '../src/application.scss'
+import "../src/application"
+import "../src/stocks"
+import "../src/actiontext"
 
 require("trix")
 require("@rails/actiontext")
