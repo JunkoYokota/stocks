@@ -30,7 +30,7 @@
       <div class="col-1 justify-content-end d-flex align-items-end">
         <div class="btn-group" role="group" aria-label="Basic example">
           <li class="edit"><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
-          <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :delete %></li>
+          <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :get %></li>
         </div>
       </div>
     </div>
