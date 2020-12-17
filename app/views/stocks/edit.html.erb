@@ -12,44 +12,47 @@
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
       <li class="col-sm-2 nav-item1 justify-content-start">
-      <i class="far fa-lightbulb"></i>
-      <span class="d-non d-sm-inline pl-1">編集中</span>
+        <i class="far fa-lightbulb"></i>
+        <span class="d-non d-sm-inline pl-1">編集中</span>
       </li>
     </ul>
   </div>
   <div class="user_panel_area">
-  <%= render 'error_form' %>
+    <%= render 'error_form' %>
     <ul class="row no-gutters">
       <div class="col-11">
         <%= form_with model: @stock, local: true do |form| %>
-          <div class="product_name">
-            <li>
-              <h2><%= form.text_field :product_name, placeholder: '商品名', value: @stock.product_name %></h2>
-              <a href="#" class="btn-sticky"><i class="far fa-heart"></i>お気に入り</a>
-              <a href="#" class="btn-sticky"><i class="far fa-star"></i>ふせん</a>
-            </li>
-          </div>
-          <div class="row justify-content-between border_bg">
-            <div class="col-10">
-              <li>
-                <%= form.label :expiration %>
-                <%= form.date_field :expiration, placeholder: '賞味期限', value: @stock.expiration %>
-              </li><br />
-              <li>
-                <%= form.label :open_date %>
-                <%= form.date_field :open_date, placeholder: '開封日', value: @stock.open_date %>
-              </li><br />
-              <li>
-                <%= form.label :detail %><br />
-                <%= form.text_area :detail, placeholder: 'メーカー・購入店舗等', value: @stock.detail %>
-              </li><br />
-              <li>
-                <%= form.label :content %><br />
-                <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで', value: @stock.content %>
-              </li>
-              <%= form.submit "更新する", class: 'btn-usr' %>
+        <div class="product_name">
+          <li>
+            <div class="sticky">
+              <a href="#" class="btn-sticky-1"><i class="far fa-star"></i>お気に入り</a>
+              <a href="#" class="btn-sticky-2"><i class="far fa-star"></i>ふせん</a>
             </div>
+            <h2><%= form.text_field :product_name, placeholder: '商品名', value: @stock.product_name %></h2>
+          </li>
+        </div>
+        <div class="row justify-content-between border_bg">
+          <div class="col-10">
+            <li>
+              <%= form.label :expiration %>
+              <%= form.date_field :expiration, placeholder: '賞味期限', value: @stock.expiration %>
+            </li><br />
+            <li>
+              <%= form.label :open_date %>
+              <%= form.date_field :open_date, placeholder: '開封日', value: @stock.open_date %>
+            </li><br />
+            <li>
+              <%= form.label :detail %><br />
+              <%= form.text_area :detail, placeholder: 'メーカー・購入店舗等', value: @stock.detail %>
+            </li><br />
+            <li>
+              <%= form.label :content %><br />
+              <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで', value: @stock.content %>
+            </li>
+
+            <%= form.submit "更新する", class: 'btn-usr' %>
           </div>
+        </div>
         <% end %>
       </div>
     </ul>

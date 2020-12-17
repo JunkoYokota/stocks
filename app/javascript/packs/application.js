@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("bootstrap")
-require.context('../images', true)
+// require.context('../images', true)
 
 
 

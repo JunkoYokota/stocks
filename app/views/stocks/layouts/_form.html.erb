@@ -1,10 +1,3 @@
-<%
-=begin%>
-<%= hidden_field_tag :display_number, params[:display_number] %>
-<span> 表示件数<%= select_tag :change_display_number, options_for_select([5, 10, 15, 20], params[:display_number]) %></span> 件
-<%
-=end%>
-
 <% @stocks.each do |stock| %>
 <ul class="row no-gutters">
   <label class="col-12">

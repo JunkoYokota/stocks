@@ -14,10 +14,10 @@ stocks_csv.each do |row|
     id: row['id'],
     product_name: row['product_name'],
     expiration: row['expiration'],
-    open_date: row['open_date'],
     detail: row['detail'],
     created_at: row['created_at'],
     updated_at: row['updated_at'],
+    open_date: row['open_date'],
     consumed: row['consumed'],
     user_id: row['user_id'],
   )
