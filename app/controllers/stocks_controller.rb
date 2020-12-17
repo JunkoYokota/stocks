@@ -106,7 +106,7 @@ class StocksController < ApplicationController
   end
 
   def stocks_params
-    params.permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :content])
+    params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :content])
   end
 
   def move_to_top

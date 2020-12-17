@@ -17,7 +17,7 @@ class Stock < ApplicationRecord
   MAX_CONTENT_ATTACHMENTS_COUNT = 2
 
   # images = content.embeds.blobs
-  images = ActiveStorage::Blob
+  # images = ActiveStorage::Blob
 
   private
   def validate_content_length
