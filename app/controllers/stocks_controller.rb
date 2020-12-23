@@ -14,6 +14,12 @@ class StocksController < ApplicationController
 
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
   end
+  def favorites
+    @stocks = Stock.where(user_id: current_user.id).stocks_favorites.recent.page(params[:page]).per(5)
+  end
+  def tags
+    @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.page(params[:page]).per(5)
+  end
 
 
 
@@ -104,7 +110,7 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :favorites, :tags).merge(user_id: current_user.id)
+    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :favorites, :tags, :content).merge(user_id: current_user.id)
   end
 
   def stocks_params

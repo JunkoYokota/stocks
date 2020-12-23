@@ -5,15 +5,15 @@
       <li>
         <div class="sticky">
           <% if stock.favorites %>
-            <%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'far fa-heart btn-sticky-1' %>
+          <%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'far fa-heart btn-sticky-1' %>
           <% else %>
-            <%= link_to "お気に", stock_path(stock, stock: {favorites: true}), method: :put, class: 'far fa-heart btn-sticky-1' %>
+          <%= link_to "お気に", stock_path(stock, stock: {favorites: true}), method: :put, class: 'far fa-heart btn-sticky-1' %>
           <% end %>
 
           <% if stock.tags %>
-            <%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, :class => "far fa-star btn-sticky-2" %>
+          <%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, :class => "far fa-star btn-sticky-2" %>
           <% else %>
-            <%= link_to "付箋", stock_path(stock, stock: {tags: true}), method: :put, :class => "far fa-star btn-sticky-3" %>
+          <%= link_to "付箋", stock_path(stock, stock: {tags: true}), method: :put, :class => "far fa-star btn-sticky-3" %>
           <% end %>
         </div>
         <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>
@@ -26,8 +26,10 @@
         <% if stock.open_date.present? %>
         <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
         <% end %>
-        <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li>
+        <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li><br />
+        <% if stock.content.present? %>
         <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
+        <% end %>
       </div>
       <div class="col-1 justify-content-end d-flex align-items-end">
         <div class="btn-group" role="group" aria-label="Basic example">

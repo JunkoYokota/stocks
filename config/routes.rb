@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get 'index_near', to: 'stocks#near'
   get 'index_expire', to: 'stocks#expire'
+  get 'index_favorites', to: 'stocks#favorites'
+  get 'index_tags', to: 'stocks#tags'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

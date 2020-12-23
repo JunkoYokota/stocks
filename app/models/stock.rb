@@ -5,8 +5,11 @@ class Stock < ApplicationRecord
   validate :validate_content_attachment_byte_size
   validate :validate_content_attachments_count
   scope :recent, -> { order(expiration: :asc)}
-  scope :stocks_near, -> { where(expiration: Date.today + 90) }
+  now = Date.today
+  scope :stocks_near, -> { where('expiration <= ?', Date.today.since(3.month)) }
   scope :stocks_expire, -> { where('expiration <= ?', Date.today) }
+  scope :stocks_favorites, -> { where(favorites: true) }
+  scope :stocks_tags, -> { where(tags: true) }
   belongs_to :user
 
 
