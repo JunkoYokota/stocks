@@ -15,6 +15,8 @@ class StocksController < ApplicationController
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
   end
 
+
+
 # 検索用
 # def index
 #   @q = Stocks.ransack(params[:q])
@@ -102,11 +104,11 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :content).merge(user_id: current_user.id)
+    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :favorites, :tags).merge(user_id: current_user.id)
   end
 
   def stocks_params
-    params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :content])
+    params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :favorites, :tags, :content])
   end
 
   def move_to_top

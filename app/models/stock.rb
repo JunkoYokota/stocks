@@ -26,26 +26,26 @@ class Stock < ApplicationRecord
     end
   end
   def validate_content_attachment_byte_size
-    content.body.attachables.grep(ActiveStorage::Blob).each do |attachable|
-      if attachable.byte_size > MAX_CONTENT_ATTACHMENT_BYTE_SIZE
-        errors.add(
-          :base,
-          :content_attachable_byte_size_is_oversize,
-          max_content_attachment_mega_byte_size: MEGA_BYTES,
-          bytes: attachable.byte_size,
-          max_bytes: MAX_CONTENT_ATTACHMENT_BYTE_SIZE
-        )
-      end
-    end
+    # content.body.attachables.grep(ActiveStorage::Blob).each do |attachable|
+    #   if attachable.byte_size > MAX_CONTENT_ATTACHMENT_BYTE_SIZE
+    #     errors.add(
+    #       :base,
+    #       :content_attachable_byte_size_is_oversize,
+    #       max_content_attachment_mega_byte_size: MEGA_BYTES,
+    #       bytes: attachable.byte_size,
+    #       max_bytes: MAX_CONTENT_ATTACHMENT_BYTE_SIZE
+    #     )
+    #   end
+    # end
   end
   def validate_content_attachments_count
-    if content.body.attachables.grep(ActiveStorage::Blob).count >
-      MAX_CONTENT_ATTACHMENTS_COUNT
-        errors.add(
-          :base, 
-          :attachment_count_is_too_many,
-          max_count: MAX_CONTENT_ATTACHMENTS_COUNT
-        )
-    end
+    # if content.body.attachables.grep(ActiveStorage::Blob).count >
+    #   MAX_CONTENT_ATTACHMENTS_COUNT
+    #     errors.add(
+    #       :base, 
+    #       :attachment_count_is_too_many,
+    #       max_count: MAX_CONTENT_ATTACHMENTS_COUNT
+    #     )
+    # end
   end
 end
