@@ -56,10 +56,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery-rails'
-gem 'kaminari'
 gem 'bootstrap'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'ransack'
 gem "font-awesome-rails" 
 gem 'rails-i18n'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

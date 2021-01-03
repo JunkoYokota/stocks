@@ -10,9 +10,21 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(5)
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: 5)
+
 
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
+  end
+
+  def stock_list
+    @page = 5
+    @stocks = Stock.paginate(page: params[:page], per_page: @page)
+  end
+  
+  def stock_list_page
+      @page = params[:per]
+      @stocks = Stock.paginate(page: params[:page], per_page: @page)
+      render("stock_list")
   end
   def favorites
     @stocks = Stock.where(user_id: current_user.id).stocks_favorites.recent.page(params[:page]).per(5)
@@ -20,7 +32,9 @@ class StocksController < ApplicationController
   def tags
     @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.page(params[:page]).per(5)
   end
-
+  # def consumed
+  #   @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.page(params[:page]).per(5)
+  # end
 
 
 # 検索用
@@ -30,11 +44,11 @@ class StocksController < ApplicationController
 # end
 
   def near
-    @stocks = Stock.where(user_id: current_user.id).stocks_near.recent.page(params[:page]).per(5)
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_near.recent.page(params[:page]).per(5)
   end
 
   def expire
-    @stocks = Stock.where(user_id: current_user.id).stocks_expire.recent.page(params[:page]).per(5)
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_expire.recent.page(params[:page]).per(5)
   end
 
   def new
@@ -86,6 +100,10 @@ class StocksController < ApplicationController
           stock.destroy
         end
       redirect_to stocks_path
+    else params[:consumed]
+      @stocks = Stock.where(id: params[:stocks_ids])
+      @stocks.update_all(consumed: false)
+      redirect_to stocks_path
     end
   end
 
@@ -105,22 +123,16 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :favorites, :tags, :content).merge(user_id: current_user.id)
+    params.require(:stock).permit(:product_name, :expiration, :detail, :open_date, :consumed, :favorites, :tags, :content).merge(user_id: current_user.id)
   end
 
   def stocks_params
-    params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :favorites, :tags, :content])
+    params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :consumed, :favorites, :tags, :content])
   end
 
   def move_to_top
     redirect_to top_path unless user_signed_in?
   end
-
-  def content
-
-  end
-
-
 
 end
 

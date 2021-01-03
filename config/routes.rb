@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   get 'index_expire', to: 'stocks#expire'
   get 'index_favorites', to: 'stocks#favorites'
   get 'index_tags', to: 'stocks#tags'
+
+  get "stock_list/:per" => "stocks#stock_list_page"
+  get "stock_list" => "stocks#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,3 +1,17 @@
+<div class="dropdown">
+<ul>
+<li  class="dropdown_menu">
+  <ul>
+    <li><%= link_to("5", "/stock_list/5") %></li>
+    <li><%= link_to("15", "/stock_list/15") %></li>
+    <li><%= link_to("30", "/stock_list/30") %></li>
+    <li><%= link_to("50", "/stock_list/50") %></li>
+  </ul>
+  </li>
+  </ul>
+  <label>件ずつ表示する</label>
+</div>
+<div class="stocks">
 <% @stocks.each do |stock| %>
 <ul class="row no-gutters">
   <label class="col-12">
@@ -41,4 +55,5 @@
   </label>
 </ul>
 <% end %>
-<%= paginate @stocks %>
+</div>
+<%= will_paginate @stocks %>
