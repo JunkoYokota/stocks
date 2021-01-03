@@ -5,15 +5,15 @@
       <li>
         <div class="sticky">
           <% if stock.favorites %>
-          <%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'far fa-heart btn-sticky-1' %>
+          <%= link_to " お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'fas fa-heart btn-sticky-fev1' %>
           <% else %>
-          <%= link_to "お気に", stock_path(stock, stock: {favorites: true}), method: :put, class: 'far fa-heart btn-sticky-1' %>
+          <%= link_to " add love", stock_path(stock, stock: {favorites: true}), method: :put, class: 'far fa-heart btn-sticky-fev0' %>
           <% end %>
 
           <% if stock.tags %>
-          <%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, :class => "far fa-star btn-sticky-2" %>
+          <%= link_to " ふせん", stock_path(stock, stock: {tags: false}), method: :put, :class => "fas fa-star btn-sticky-tag1" %>
           <% else %>
-          <%= link_to "付箋", stock_path(stock, stock: {tags: true}), method: :put, :class => "far fa-star btn-sticky-3" %>
+          <%= link_to " ふせんする", stock_path(stock, stock: {tags: true}), method: :put, :class => "far fa-star btn-sticky-tag0" %>
           <% end %>
         </div>
         <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>

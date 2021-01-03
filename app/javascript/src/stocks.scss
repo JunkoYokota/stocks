@@ -15,11 +15,12 @@ a:hover{
 .no-gutters > .col,
 .no-gutters > [class*="col-"] {
   margin: 0;
-  padding: 0;
+  padding: 2;
 }
 .container{
   min-width: 760px;
   margin: 10px;
+  padding-bottom: 15px;
   background-color: #ccffcc;
   display: block;
 }
@@ -118,7 +119,7 @@ a:hover{
   display: flex;
   padding-left: 8px;
   width: 100%;
-  background-color: #ccffcc;
+  background-color: #c8d627;
 }
 .product_name h2{
   display: inline;
@@ -194,63 +195,114 @@ a:hover{
   padding: 0 7px;
   background-color: #ccffcc;
 }
-.btn-sticky-1 {
+.btn-sticky-fev0 {
   display: inline-block;
-  padding: 0.5em 0.5em 0.3em 0;
+  padding: 0.35em 0.35em 0.28em 0.55em;
   text-decoration: none;
-  background: #f7f7f7;
-  border-right: solid 6px #DD9BA5;
-  color: #DD9BA5;
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(204, 84, 111, 0.25);
+  color: #d1253f;
   font-weight: bold;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  font-size: 6px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: 12px;
   letter-spacing: 0.1em;
   position: absolute;
-  right: -25px;
+  right: -30px;
+  top: -2px;
 }
-.btn-sticky-2 {
+.btn-sticky-fev1 {
   display: inline-block;
-  padding: 0.5em 0.5em 0.3em 0;
+  padding: 0.35em 0.35em 0.28em 0.55em;
   text-decoration: none;
   background: #f7f7f7;
-  border-right: solid 6px #DD9BA5;
-  color: #DD9BA5;
+  border-right: solid 6px #cc546f;
+  color: #d1253f;
   font-weight: bold;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  font-size: 6px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   position: absolute;
-  right: -25px;
+  right: -30px;
+  top: -2px;
+}
+.btn-sticky-tag0 {
+  display: inline-block;
+  padding: 0.35em 0.35em 0.28em 0.55em;
+  text-decoration: none;
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(153, 204, 242, 0.25);
+  color: #27baca;
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: -30px;
   top: 22px;
 }
-.btn-sticky-3 {
+.btn-sticky-tag1 {
   display: inline-block;
-  padding: 0.5em 0.5em 0.3em 0;
+  padding: 0.35em 0.35em 0.28em 0.55em;
   text-decoration: none;
   background: #f7f7f7;
-  border-right: solid 6px #DD9BA5;
+  border-right: solid 6px #99ccf2;
+  color: #27baca;
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: -30px;
+  top: 22px;
+}
+.btn-sticky-fev1:hover {
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(204, 84, 111, 0.25);
+  color: #DD9BA5;
+}
+.btn-sticky-fev0:hover {
+  background: #f7f7f7;
+  border-right: solid 6px #cc546f;
+  color: #d1253f;
+}
+.btn-sticky-tag0:hover {
+  background: #f7f7f7;
+  border-right: solid 6px #99ccf2;
+  color: #27baca;
+}
+.btn-sticky-tag1:hover {
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(153, 204, 242, 0.25);
   color: #90C9CF;
-  font-weight: bold;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  font-size: 6px;
-  letter-spacing: 0.1em;
-  position: absolute;
-  right: -25px;
-  top: 22px;
 }
-.btn-sticky-1:active {
+.btn-sticky-fev0:active {
   box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
   transform: translateY(2px);
+  background: #f7f7f7;
+  border-right: solid 6px #cc546f;
+  color: #d1253f;
 }
-.btn-sticky-2:active {
+.btn-sticky-fev1:active {
   box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
   transform: translateY(2px);
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(204, 84, 111, 0.25);
+  color: #DD9BA5;
 }
-.btn-sticky-3:active {
+.btn-sticky-tag0:active {
   box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
   transform: translateY(2px);
+  background: #f7f7f7;
+  border-right: solid 6px #99ccf2;
+  color: #27baca;
 }
-
+.btn-sticky-tag1:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+  background: rgba(247, 247, 247,0.9);
+  border-right: solid 6px rgba(153, 204, 242, 0.25);
+  color: #90C9CF;
+}
 // ログイン画面
 .user_panel_area{
   width:100%;

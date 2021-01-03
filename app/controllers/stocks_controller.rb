@@ -53,11 +53,6 @@ class StocksController < ApplicationController
     end
   end
 
-  # def back
-  #   @stock = Stock.find(params[:ids])
-  #   render :edit
-  # end
-
   def show
     @stock = Stock.find(params[:id])
   end
