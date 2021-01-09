@@ -209,20 +209,20 @@ a:hover{
 .btn-sticky-fev0 {
   display: inline-block;
   padding: 0.1em 0.5em 0.1em 0.5em;
+  font-size: 12px;
   text-decoration: none;
-  background: rgba(247, 247, 247,0.9);
+  background: rgba(247, 247, 247,0.7);
   border-right: solid 6px rgba(204, 84, 111, 0.25);
   color: #d1253f;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
-  font-size: 12px;
   position: absolute;
   right: -30px;
   top: -2px;
 }
 .btn-sticky-fev1 {
   display: inline-block;
-  padding: 0.3em 0.5em 0.25em 0.5em;
-  font-size: 13px;
+  padding: 0.25em 0.5em 0.2em 0.5em;
+  font-size: 14px;
   text-decoration: none;
   background: #f7f7f7;
   border-right: solid 6px #cc546f;
@@ -232,21 +232,52 @@ a:hover{
   right: -30px;
   top: -2px;
 }
+.btn-sticky-tag0 {
+  display: inline-block;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  font-size: 12px;
+  text-decoration: none;
+  background: rgba(247, 247, 247,0.7);
+  border-right: solid 6px rgba(153, 204, 242, 0.25);
+  color: #27baca;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
+  position: absolute;
+  right: -30px;
+  top: 22px;
+}
+.btn-sticky-tag1 {
+  display: inline-block;
+  padding: 0.25em 0.5em 0.2em 0.5em;
+  font-size: 14px;
+  text-decoration: none;
+  background: #f7f7f7;
+  border-right: solid 6px #99ccf2;
+  color: #27baca;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  position: absolute;
+  right: -30px;
+  top: 22px;
+}
 .fev{
   color: #d1253f;
-  letter-spacing: -0.0em;
-  font-size: 13px;
   font-family: 'smartfontUI';
+  letter-spacing: 0;
 }
-.fb:before {
-	font-family: 'FontAwesome' ;
-  padding-right: 0.1em;
+.tag{
+  color: #27baca;
+  font-family: 'smartfontUI';
+  letter-spacing: 0;
+}
+.fb{
+  font-family: 'FontAwesome';
+}
+.fc{
+  font-family: 'FontAwesome';
 }
 .fas-heart:before {
 	content: '\f004';
   color: #d1253f;
   font-weight: 900;
-  padding: 0.1em 0.5em 0.1em 0.5em;
   font-size: 13px;
 }
 .far-heart:before {
@@ -256,61 +287,15 @@ a:hover{
 .fev:hover{
   color: #DD9BA5;
 }
-.btn-sticky-tag0 {
-  display: inline-block;
-  padding: 0.1em 0.5em 0.1em 0.5em;
-  text-decoration: none;
-  background: rgba(247, 247, 247,0.9);
-  border-right: solid 6px rgba(153, 204, 242, 0.25);
-  color: #27baca;
-  font-weight: bold;
-  letter-spacing: -0.01em;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.19);
-  font-size: 12px;
-  position: absolute;
-  right: -30px;
-  top: 22px;
-}
-.btn-sticky-tag1 {
-  display: inline-block;
-  padding: 0.3em 0.5em 0.25em 0.5em;
-  font-size: 13px;
-  text-decoration: none;
-  background: #f7f7f7;
-  border-right: solid 6px #99ccf2;
-  color: #27baca;
-  font-weight: bold;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  position: absolute;
-  right: -30px;
-  top: 22px;
-}
 .fas-star:before {
 	content: '\f005';
-	color: #27baca;
-}
-.tag{
-  color: #d1253f;
-  letter-spacing: -0.0em;
-  font-size: 13px;
-  font-family: 'smartfontUI';
-}
-.fas-star:before {
-	content: '\f004';
-  color: #d1253f;
-  font-weight: 900;
-  padding: 0.1em 0.5em 0.1em 0.5em;
-  font-size: 13px;
-}
-.far-atar:before {
-	content: '\f004';
-  color: #DD9BA5;
-}
-.tag{
   color: #27baca;
-  letter-spacing: -0.0em;
+  font-weight: 900;
   font-size: 13px;
-  font-family: 'smartfontUI';
+}
+.far-star:before {
+	content: '\f005';
+  color: #27baca;
 }
 .tag:hover{
   color: #99ccf2;
