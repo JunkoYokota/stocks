@@ -84,14 +84,10 @@ class StocksController < ApplicationController
   def update
     @stock = Stock.find(params[:id])
     if
-      params[:to_index]
-      @stock.update(tags)
+      @stock.update(stock_params)
       redirect_to stocks_path
-    elsif
-      @stock.update(tags)
-      redirect_to stock_path
     else
-      redirect_to stocks_path
+      render "edit"
     end
   end
 
