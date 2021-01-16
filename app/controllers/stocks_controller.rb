@@ -53,6 +53,9 @@ class StocksController < ApplicationController
   def tags
     @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.paginate(page: params[:page], per_page: 5)
   end
+  def consumed
+    @stocks = Stock.where(user_id: current_user.id).stocks_consumed.recent.paginate(page: params[:page], per_page: 5)
+  end
 
   def new
     @stock = Stock.new
@@ -142,7 +145,7 @@ class StocksController < ApplicationController
     params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :consumed, :favorites, :tags, :content]).merge(user_id: current_user.id)
   end
   def tags
-    params.require(:stock).permit(:favorites, :tags).merge(user_id: current_user.id)
+    params.require(:stock).permit(:favorites, :tags, :consumed).merge(user_id: current_user.id)
   end
 
   def move_to_top

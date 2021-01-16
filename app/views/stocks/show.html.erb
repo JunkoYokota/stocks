@@ -40,8 +40,12 @@
             </div>
             <div class="col-1 justify-content-end d-flex align-items-end">
               <div class="btn-group" role="group" aria-label="Basic example">
+                <% if @stock.consumed == false %>
+                <li class="edit"><span class="fas far-star"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %></span></li>
+                <% else %>
+                <li class="edit"><span class="fc far-star"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %></span></li>
+                <% end %>
                 <li class="edit"><%= link_to '編集する', "/stocks/#{@stock.id}/edit", method: :get %></li>
-                <li class="delete"><%= link_to "消費済にする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
               </div>
             </div>
           </div>

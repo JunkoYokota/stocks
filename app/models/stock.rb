@@ -10,6 +10,7 @@ class Stock < ApplicationRecord
   scope :stocks_expire, -> { where('expiration <= ?', Date.today) }
   scope :stocks_favorites, -> { where(favorites: true) }
   scope :stocks_tags, -> { where(tags: true) }
+  scope :stocks_consumed, -> { where(consumed: true) }
   belongs_to :user
 
 

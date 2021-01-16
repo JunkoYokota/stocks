@@ -28,9 +28,9 @@
         <li>
           <div class="sticky">
             <% if stock.favorites %>
-            <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), remote: true, method: :put, class: 'fev' %></span>
+            <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'fev', :name => 'to_index' %></span>
             <% else %>
-            <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), remote: true, method: :put, class: 'fev' %></span>
+            <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), method: :put, class: 'fev', :name => 'to_index' %></span>
             <% end %>
             <% if stock.tags %>
             <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, class: "tag", :name => 'to_index' %></span>
@@ -56,19 +56,7 @@
         <div class="col-1 justify-content-end d-flex align-items-end">
           <div class="btn-group" role="group" aria-label="Basic example">
             <li class="edit"><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
-            <li class="delete"><%= link_to '消費済み', "/stocks/#{stock.id}/", method: :get %></li>
-            <li class="delete"><%= link_to "消費済にする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
-            <li class="delete"><%= link_to "消費済にする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
-            <% if stock.favorites %>
-            <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), remote: true, method: :put, class: 'fev' %></span>
-            <% else %>
-            <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), remote: true, method: :put, class: 'fev' %></span>
-            <% end %>
-            <% if stock.tags %>
-            <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, class: "tag", :name => 'to_index' %></span>
-            <% else %>
-            <span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(stock, stock: {tags: true}), method: :put, class: "tag", :name => 'to_index' %></span>
-            <% end %>
+            <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :get %></li>
           </div>
         </div>
       </div>
