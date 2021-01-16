@@ -33,8 +33,8 @@
     <%= render 'stocks/layouts/form' %>
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-outline-info" %>
+      <%= submit_tag "まとめて消費済にする", :name => 'consumed', :class => "btn btn-outline-warning" %>
       <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-outline-warning" %>
-      <%= submit_tag "消費済にする", :name => 'consumed', :class => "btn btn-outline-warning" %>
     </div>
     <% end %>
   </div>

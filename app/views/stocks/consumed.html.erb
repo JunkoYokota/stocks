@@ -1,0 +1,63 @@
+<%= render 'stocks/layouts/header' %>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item1 justify-content-start">
+        <i class="far fa-lightbulb"></i>
+        <span class="d-non d-sm-inline pl-1">再登録中</span>
+      </li>
+    </ul>
+  </div>
+  <div class="panel_area">
+    <div class="stocks">
+      <%= render 'error_form' %>
+      <ul class="row no-gutters">
+        <div class="col-12">
+          <%= form_with model: @stock do |form| %>
+          <div class="product_name">
+            <li>
+              <div class="sticky">
+                <% if @stock.favorites %>
+                <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(@stock, stock: {favorites: false}), method: :put, class: 'fev' %></span>
+                <% else %>
+                <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(@stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
+                <% end %>
+                <% if @stock.tags %>
+                <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(@stock, stock: {tags: false}), method: :put, class: "tag" %></span>
+                <% else %>
+                <span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(@stock, stock: {tags: true}), method: :put, class: "tag" %></span>
+                <% end %>
+              </div>
+              <h2><%= form.text_field :product_name, placeholder: '商品名', value: @stock.product_name %></h2>
+            </li>
+          </div>
+        </div>
+        <div class="row justify-content-between border_bg">
+          <div class="col-10">
+            <li>
+              <%= form.label :expiration %>
+              <%= form.date_field :expiration, placeholder: '賞味期限', value: @stock.expiration %>
+            </li><br />
+            <li>
+              <%= form.label :open_date %>
+              <%= form.date_field :open_date, placeholder: '開封日', value: @stock.open_date %>
+            </li><br />
+            <li>
+              <%= form.label :detail %><br />
+              <%= form.text_area :detail, placeholder: 'メーカー・購入店舗等', value: @stock.detail %>
+            </li><br />
+            <li>
+              <%= form.label :content %><br />
+              <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで', value: @stock.content %>
+            </li>
+						<%= form.hidden_field :consumed, :value => true %>
+            <%= form.submit "再登録する", class: 'btn-usr' %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+    </ul>
+  </div>
+</div>
+</div>
+<a href="/stocks/">Home!</a>

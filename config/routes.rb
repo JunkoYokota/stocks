@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'}
   resources :stocks do
     collection do
-      post '/:id/check_tags' => 'stocks#check_tags'
+      get '/:id/consumed_edit' => 'stocks#consumed'
+      put '/:id/consumed_update' => 'stocks#consumed_update'
     end
   end
   root to: 'stocks#top'

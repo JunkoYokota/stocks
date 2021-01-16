@@ -10,7 +10,7 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: 5)
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: 10)
 
 
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
@@ -54,7 +54,12 @@ class StocksController < ApplicationController
     @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.paginate(page: params[:page], per_page: 5)
   end
   def consumed
-    @stocks = Stock.where(user_id: current_user.id).stocks_consumed.recent.paginate(page: params[:page], per_page: 5)
+    @stock = Stock.find(params[:id])
+  end
+
+  def consumed_update
+    @stock = Stock.find(params[:id])
+    @stocks.update(consumed: true)
   end
 
   def new
