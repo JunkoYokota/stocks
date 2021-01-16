@@ -1,13 +1,4 @@
-<div class="header">
-  <div class="row">
-    <div class="col-9">
-      <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
-    </div>
-    <div class="col-3">
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
-    </div>
-  </div>
-</div>
+<%= render 'stocks/layouts/header' %>
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
@@ -17,33 +8,47 @@
       </li>
     </ul>
   </div>
-  <div class="user_panel_area">
-    <ul class="row no-gutters">
-      <div class="col-11">
-        <div class="product_name">
-          <li>
-            <div class="sticky">
-              <a href="#" class="btn-sticky-1"><i class="far fa-heart"></i>お気に入り</a>
-              <a href="#" class="btn-sticky-2"><i class="far fa-star"></i>ふせん</a>
-            </div>
-            <h2 class="check_box"></h2>
-            <h2><%= @stock.product_name %></h2>
-          </li>
-        </div>
-        <div class="row justify-content-between border_bg">
-          <div class="col-10">
-            <li> ｜ 賞味期限 ｜ <%= @stock.expiration %> ｜ </li><br />
-            <% if @stock.open_date.present? %>
-            <li> ｜ 開封日 ｜ <%= @stock.open_date %> ｜ </li><br />
-            <% end %>
-            <li> ｜ メーカー・購入店舗等 ｜ <%= @stock.detail %></li>
-            <li> ｜ 詳細・メモ ｜ <%= @stock.content %></li>
+  <div class="panel_area">
+    <div class="stocks">
+      <ul class="row no-gutters">
+        <label class="col-12">
+          <div class="product_name">
+            <li>
+              <div class="sticky">
+                <% if @stock.favorites %>
+                <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(@stock, stock: {favorites: false}), method: :put, class: 'fev' %></span>
+                <% else %>
+                <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(@stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
+                <% end %>
+                <% if @stock.tags %>
+                <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(@stock, stock: {tags: false}), method: :put, class: "tag" %></span>
+                <% else %>
+                <span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(@stock, stock: {tags: true}), method: :put, class: "tag" %></span>
+                <% end %>
+              </div>
+              <h2><%= @stock.product_name %></h2>
+            </li>
           </div>
-          <p>お気に入りに追加する</p>
-          <%= link_to "編集する", "/stocks/#{@stock.id}/edit", method: :get %>
-        </div>
-        <%= button_to "削除しても良いですか？", "/stocks/#{@stock.id}/", method: :delete %>
-      </div>
-    </ul>
+          <div class="row justify-content-between border_bg">
+            <div class="col-10">
+              <li> ｜ 賞味期限 ｜ <%= @stock.expiration %> ｜ </li><br />
+              <% if @stock.open_date.present? %>
+              <li> ｜ 開封日 ｜ <%= @stock.open_date %> ｜ </li><br />
+              <% end %>
+              <li> ｜ メーカー・購入店舗等 ｜ <%= @stock.detail %></li>
+              <li> ｜ 詳細・メモ ｜ <%= @stock.content %></li>
+            </div>
+            <div class="col-1 justify-content-end d-flex align-items-end">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <li class="edit"><%= link_to '編集する', "/stocks/#{@stock.id}/edit", method: :get %></li>
+                <li class="delete"><%= link_to "消費済にする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
+              </div>
+            </div>
+          </div>
+          <%= button_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %>
+        </label>
+      </ul>
+    </div>
   </div>
 </div>
+<a href="/stocks/">Home!</a>
