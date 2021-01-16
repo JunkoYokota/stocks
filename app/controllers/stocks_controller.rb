@@ -10,7 +10,8 @@ class StocksController < ApplicationController
   end
 
   def index
-    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: 10)
+    @page = 10
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
 
 
     # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
@@ -21,16 +22,11 @@ class StocksController < ApplicationController
     @stocks = Stock.paginate(page: params[:page], per_page: @page)
   end
   
-  def stock_list_page
-      @page = params[:per]
-      @stocks = Stock.paginate(page: params[:page], per_page: @page)
-      render("stock_list")
+  def stocks_page
+    @page = params[:per]
+    @stocks = Stock.paginate(page: params[:page], per_page: @page)
+    render("stock_list")
   end
-  
-  # def consumed
-  #   @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.page(params[:page]).per(5)
-  # end
-
 
 # 検索用
 # def index

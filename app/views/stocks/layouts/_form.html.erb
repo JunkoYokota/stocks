@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-5">
     <div class="dropdown">
-      <ul>
-        <li class="dropdown_menu">
-          <ul>
-            <li><%= link_to("5", "/stock_list/5") %></li>
-            <li><%= link_to("15", "/stock_list/15") %></li>
-            <li><%= link_to("30", "/stock_list/30") %></li>
-            <li><%= link_to("50", "/stock_list/50") %></li>
-          </ul>
-        </li>
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <%= @page %>
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><%= link_to("5", "/stock_list/5") %></li>
+        <li><%= link_to("15", "/stock_list/15") %></li>
+        <li><%= link_to("30", "/stock_list/30") %></li>
+        <li><%= link_to("50", "/stock_list/50") %></li>
       </ul>
-      <label>件ずつ表示する</label>
-    </div>
+    <label>件ずつ表示する</label>
+  </div>
   </div>
   <div class="col-5 ml-auto text-center">
     <a href="/index_past">
