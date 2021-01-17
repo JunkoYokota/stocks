@@ -1,25 +1,15 @@
 class StocksController < ApplicationController
-  # before_action :authenticate_user!, only: [:index]
   before_action :move_to_top, except: :top
   
-
   def top
-    # if user_signed_in?
-    #   render :index
-    # end
+    if user_signed_in?
+      render :index
+    end
   end
 
   def index
     @page = 10
     @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
-
-
-    # @stocks = Stock.all.includes(:user).where(user_id: current_user.id).recent.page(params[:page]).per(params[:display_number])
-  end
-
-  def stock_list
-    @page = 5
-    @stocks = Stock.paginate(page: params[:page], per_page: @page)
   end
   
   def stocks_page
@@ -27,12 +17,15 @@ class StocksController < ApplicationController
     @stocks = Stock.paginate(page: params[:page], per_page: @page)
     render("stock_list")
   end
-
-# 検索用
-# def index
-#   @q = Stocks.ransack(params[:q])
-#   @stocks = @q.result.page(params[:page]).per(params[:display_number])
-# end
+  def past
+    @page = 5
+    @stocks = Stock.where(consumed: false, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
+  end
+  def past_page
+    @page = params[:per]
+    @stocks = Stock.paginate(page: params[:page], per_page: @page)
+    render("past_list")
+  end
 
   def near
     @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_near.recent.paginate(page: params[:page], per_page: 5)
@@ -40,9 +33,7 @@ class StocksController < ApplicationController
   def expire
     @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_expire.recent.paginate(page: params[:page], per_page: 5)
   end
-  def past
-    @stocks = Stock.where(consumed: false, user_id: current_user.id).recent
-  end
+
   def favorites
     @stocks = Stock.where(user_id: current_user.id).stocks_favorites.recent.paginate(page: params[:page], per_page: 5)
   end
@@ -126,12 +117,6 @@ class StocksController < ApplicationController
     end
     redirect_to stocks_path
   end
-  def check_tags
-    @stocks = Stock.find(params[:id])
-	  @stocks.private = !@stocks.private
-	  @stocks.save
-  end
-
 
   private
   def stock_params
@@ -141,9 +126,9 @@ class StocksController < ApplicationController
   def stocks_params
     params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :consumed, :favorites, :tags, :content]).merge(user_id: current_user.id)
   end
-  def tags
-    params.require(:stock).permit(:favorites, :tags, :consumed).merge(user_id: current_user.id)
-  end
+  # def tags
+  #   params.require(:stock).permit(:favorites, :tags, :consumed).merge(user_id: current_user.id)
+  # end
 
   def move_to_top
     redirect_to top_path unless user_signed_in?

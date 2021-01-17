@@ -30,7 +30,7 @@
     </div>
     <div class="panel_area">
       <%= form_tag("/confirm_stocks", method: :get) do %>
-      <%= render 'stocks/layouts/form' %>
+      <%= render 'stocks/layouts/form_tabs' %>
       <div class="btn-group" role="group" aria-label="Basic example">
         <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-info" %>
         <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-warning" %>
