@@ -53,7 +53,7 @@
           <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
           <% end %>
           <% if stock.consumed %>
-            <span class="fas far-star btn-sticky"><%= link_to "消費済みにする", stock_path(stock, stock: {consumed: false}), method: :put, class: "tag" %></span>
+            <span class="fas far-star btn-sticky"><%= link_to "消費済みにする", "/stocks/#{stock.id}", method: :get, class: "tag" %></span>
             <% else %>
             <span class="fc far-star btn-sticky"><%= link_to "再登録をする", "/stocks/#{stock.id}/consumed_edit", method: :get, class: "tag" %></span>
           <% end %>

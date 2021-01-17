@@ -1,0 +1,12 @@
+<div class="sticky">
+	<% if @stock.favorites %>
+	<span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(@stock, stock: {favorites: false}), method: :put, class: 'fev' %></span>
+	<% else %>
+	<span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(@stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
+	<% end %>
+	<% if @stock.tags %>
+	<span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(@stock, stock: {tags: false}), method: :put, class: "tag" %></span>
+	<% else %>
+	<span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(@stock, stock: {tags: true}), method: :put, class: "tag" %></span>
+	<% end %>
+</div>
