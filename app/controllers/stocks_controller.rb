@@ -2,9 +2,7 @@ class StocksController < ApplicationController
   before_action :move_to_top, except: :top
   
   def top
-    if user_signed_in?
-      render :index
-    end
+    @stocks = Stock.where(id: [1,2,3]).recent
   end
 
   def index
