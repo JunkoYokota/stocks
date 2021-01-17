@@ -1,36 +1,29 @@
-<div class="header">
-  <div class="row">
-    <div class="col-9">
-      <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
-    </div>
-    <div class="col-3">
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
-    </div>
-  </div>
-</div>
+<%= render 'stocks/layouts/header' %>
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item justify-content-start">
+        <a href="/stocks">
+          <i class="far fa-lightbulb"></i>
+          <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
+      </li>
       <li class="col-sm-2 nav-item1 justify-content-start">
         <i class="far fa-lightbulb"></i>
         <span class="d-non d-sm-inline pl-1">記録中</span>
       </li>
     </ul>
   </div>
-  <div class="user_panel_area">
-    <%= render 'error_form' %>
-    <ul class="row no-gutters">
-      <div class="col-11">
+  <div class="panel_area">
+    <div class="stocks">
+      <%= render 'error_form' %>
+      <ul class="row no-gutters">
+        <label class="col-12">
         <%= form_with model: @stock, local: true do |form| %>
-        <div class="product_name">
-          <li>
-            <div class="sticky">
-              <a href="#" class="btn-sticky-1"><i class="far fa-heart"></i>お気に入り</a>
-              <a href="#" class="btn-sticky-2"><i class="far fa-star"></i>ふせん</a>
-            </div>
-            <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
-          </li>
-        </div>
+          <div class="product_name">
+            <li>
+              <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
+            </li>
+          </div>
         <div class="row justify-content-between border_bg">
           <div class="col-10">
             <li>

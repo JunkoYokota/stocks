@@ -2,6 +2,11 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
+    <li class="col-sm-2 nav-item justify-content-start">
+      <a href="/stocks">
+        <i class="far fa-lightbulb"></i>
+        <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
+      </li>
       <li class="col-sm-2 nav-item1 justify-content-start">
         <i class="far fa-lightbulb"></i>
         <span class="d-non d-sm-inline pl-1">編集中</span>
@@ -39,7 +44,7 @@
               <%= form.label :content %><br />
               <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで', value: @stock.content %>
             </li>
-            <%= form.submit "更新する", class: 'btn-usr' %>
+            <%= form.submit "更新する", class: 'btn btn-info' %>
           </div>
         </div>
         <% end %>

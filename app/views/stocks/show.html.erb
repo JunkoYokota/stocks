@@ -2,6 +2,11 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
+    <li class="col-sm-2 nav-item justify-content-start">
+      <a href="/stocks">
+        <i class="far fa-lightbulb"></i>
+        <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
+      </li>
       <li class="col-sm-2 nav-item1 justify-content-start">
         <i class="far fa-lightbulb"></i>
         <span class="d-non d-sm-inline pl-1">編集中</span>
@@ -30,14 +35,14 @@
             <div class="col-1 justify-content-end d-flex align-items-end">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <% if @stock.consumed == false %>
-                <li class="edit"><span class="fas far-star"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %></span></li>
+                <li class="edit"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %></span></li>
                 <% else %>
-                <li class="edit"><span class="fc far-star"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %></span></li>
+                <li class="edit"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %></span></li>
                 <% end %>
+                <li class="edit"><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %></span></li>
               </div>
             </div>
           </div>
-          <%= button_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %>
         </label>
       </ul>
     </div>

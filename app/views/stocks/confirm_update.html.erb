@@ -1,63 +1,64 @@
-<div class="header">
-  <div class="row">
-    <div class="col-9">
-      <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
-    </div>
-    <div class="col-3">
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
-    </div>
-  </div>
-</div>
+<%= render 'stocks/layouts/header' %>
 <div class="wrap">
   <div class="tab_area">
-    <div class="tab_area">
-      <ul class="row nav justify-content-end no-gutters">
-        <li class="col-sm-2 nav-item1 justify-content-start">
+    <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item justify-content-start">
+        <a href="/stocks">
           <i class="far fa-lightbulb"></i>
-          <span class="d-non d-sm-inline pl-1">まとめて編集中</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="user_panel_area">
-    まとめて編集画面では詳細登録・編集はできません。
-    <%= form_with model: @stocks, url: update_all_path, method: :put do |form| %>
-    <% @stocks.each do |stock| %>
-    <ul class="row no-gutters">
-      <div class="col-11">
-        <%= fields_for 'stocks[]', stock do |field| %>
-        <div class="product_name">
-          <li>
-            <div class="sticky">
-              <a href="#" class="btn-sticky-1"><i class="far fa-heart"></i>お気に入り</a>
-              <a href="#" class="btn-sticky-2"><i class="far fa-star"></i>ふせん</a>
-            </div>
-            <h2><%= field.text_field :product_name, placeholder: '商品名', value: stock.product_name %></h2>
-          </li>
-        </div>
-        <div class="row justify-content-between border_bg">
-          <div class="col-10">
-            <li>
-              <%= field.label :expiration %>
-              <%= field.date_field :expiration, placeholder: '賞味期限', value: stock.expiration %>
-            </li><br />
-            <li>
-              <%= field.label :detail %>
-              <%= field.text_area :detail, placeholder: 'メーカー・購入店舗等', value: stock.detail %>
-            </li><br />
-            <li>
-              <%= field.label :open_date %>
-              <%= field.date_field :open_date, placeholder: '開封日', value: stock.open_date %>
-            </li><br />
-
-
-          </div>
-        </div>
-        <% end %>
-      </div>
+          <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
+      </li>
+      <li class="col-sm-2 nav-item1 justify-content-start">
+        <i class="far fa-lightbulb"></i>
+        <span class="d-non d-sm-inline pl-1">まとめて編集中</span>
+      </li>
     </ul>
+  </div>
+  <div class="panel_area">
+    <div class="stocks">
+      まとめて編集画面では詳細登録・編集はできません。
+      <%= form_with model: @stocks, url: update_all_path, method: :put do |form| %>
+      <% @stocks.each do |stock| %>
+      <ul class="row no-gutters">
+        <div class="col-12">
+          <%= fields_for 'stocks[]', stock do |field| %>
+          <div class="product_name">
+            <li>
+              <div class="sticky">
+                <% if stock.favorites %>
+                <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'fev' %></span>
+                <% else %>
+                <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
+                <% end %>
+                <% if stock.tags %>
+                <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, class: "tag" %></span>
+                <% else %>
+                <span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(stock, stock: {tags: true}), method: :put, class: "tag" %></span>
+                <% end %>
+              </div>
+              <h2><%= field.text_field :product_name, placeholder: '商品名', value: stock.product_name %></h2>
+            </li>
+          </div>
+          <div class="row justify-content-between border_bg">
+            <div class="col-10">
+              <li>
+                <%= field.label :expiration %>
+                <%= field.date_field :expiration, placeholder: '賞味期限', value: stock.expiration %>
+              </li><br />
+              <li>
+                <%= field.label :detail %>
+                <%= field.text_area :detail, placeholder: 'メーカー・購入店舗等', value: stock.detail %>
+              </li><br />
+              <li>
+                <%= field.label :open_date %>
+                <%= field.date_field :open_date, placeholder: '開封日', value: stock.open_date %>
+              </li><br />
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </ul>
     <% end %>
-    <%= form.submit '一括編集', :name => "update_all" %>
+    <%= form.submit 'まとめて更新', :name => "update_all", :class => "btn btn-info" %>
     <% end %>
   </div>
 </div>
