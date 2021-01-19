@@ -64,4 +64,9 @@ Rails.application.configure do
     
   config.reload_classes_only_on_change = false
   config.file_watcher = ActiveSupport::FileUpdateChecker
+
+  config.action_mailer.smtp_settings = {
+    address: 'mailcatcher',
+    port: 1025
+  }
 end

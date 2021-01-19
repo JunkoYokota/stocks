@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get "stock_list/:per" => "stocks#stocks_page"
   get "past_list/:per" => "stocks#past_page"
 
-  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resource :passwords, only: [:create, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

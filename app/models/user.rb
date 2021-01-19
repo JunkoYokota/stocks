@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :stocks
   has_many :content
+
+  def remember_me
+    true
+  end
 end

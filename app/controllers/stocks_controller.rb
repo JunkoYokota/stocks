@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :move_to_top, except: :top
+  before_action :move_to_top, except: [:top, passwords_path]
   
   def top
     @stocks = Stock.where(id: [1,2,3]).recent

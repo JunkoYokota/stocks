@@ -31,7 +31,6 @@
                 <li><%= f.label :password %>
                 <%= f.password_field :password, autocomplete: "current-password", class: 'pass' %></li>
               </div>
-              <%= link_to "(forgot password)", new_password_reset_path %>
 
               <% if devise_mapping.rememberable? %>
                 <div class="field">
