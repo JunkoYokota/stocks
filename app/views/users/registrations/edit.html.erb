@@ -1,8 +1,18 @@
-<div class="col-9">
-  <h3><a href="#">Stocked UP!</a></h3>
-</div>
+<%= render 'stocks/layouts/header' %>
 <div class="wrap">
-  <%= render 'stocks/layouts/tab' %>
+  <div class="tab_area">
+    <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item justify-content-start">
+        <a href="/stocks">
+          <i class="far fa-lightbulb"></i>
+          <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
+      </li>
+      <li class="col-sm-2 nav-item1 justify-content-start">
+        <i class="far fa-bell"></i>
+        <span class="d-non d-sm-inline pl-1">アカウント編集中</span>
+      </li>
+    </ul>
+  </div>
   <div class="user_panel_area">
     <ul class="row justify-content-center no-gutters">
       <div class="col-11">
@@ -13,8 +23,8 @@
         </div>
         <div class="row justify-content-between border_bg">
           <div class="col-10">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= render "users/shared/error_messages", resource: resource %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
             <div class="box-name">
               <%= f.label :user_name %><br />
               <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
@@ -24,17 +34,17 @@
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>現在、確認を待っています: <%= resource.unconfirmed_email %></div>
+            <div>現在、確認を待っています: <%= resource.unconfirmed_email %></div>
             <% end %>
             <div class="box-password">
               新しい<%= f.label :password %><br />
               <i>(変更しない場合は空欄のままにしてください。)
                 <% if @minimum_password_length %>
-                  <em><%= @minimum_password_length %>文字以内</em>
+                <em><%= @minimum_password_length %>文字以内</em>
                 <% end %>
               </i><br />
               <%= f.password_field :password, autocomplete: "new-password" %>
-              
+
             </div>
             <div class="box-password">
               <%= f.label :password_confirmation %><br />
@@ -46,12 +56,12 @@
               <%= f.password_field :current_password, autocomplete: "current-password" %>
             </div>
             <div class="actions">
-              <%= f.submit "Update", class: 'btn-usr' %>
+              <%= f.submit "更新", class: 'btn-usr' %>
             </div>
           </div>
         </div>
       </div>
-    </ul>   
+    </ul>
     <% end %>
     <div class="col-9">
       <%= render "users/shared/links" %>
@@ -59,8 +69,6 @@
   </div>
 </div>
 
-<h3>アカウント削除</h3>
-
-<p>Unhappy? <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'btn-usr' %></p>
+<p>アカウント削除しますか？<%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'btn-usr' %></p>
 
 <%= link_to "Back", :back %>

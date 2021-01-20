@@ -1,28 +1,27 @@
 <div class="top">
   <div class="row justify-content-center">
-  <h2>このページはサンプルです。</h2>
-  <% if user_signed_in? %>
+    <h2>このページはサンプルです。</h2>
+    <% if user_signed_in? %>
     <div class="col-12 text-center">
       <p>現在は<%= current_user.user_name %>さんとしてログイン中です。</p>
-      <%= link_to  "Welcome to your home!", stocks_path, method: :get, :class => "btn btn-info" %>
+      <%= link_to  "Welcome to your home!", stocks_path, method: :get, :class => "btn-usr" %>
     </div>
     <div class="col-12 d-flex justify-content-end">
-      <%= link_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn btn-info" %>
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
+      <%= link_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn-usr" %>
+      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn-usr" %>
     </div>
-  <% elsif %>
+    <% elsif %>
     <div class="col-9 d-flex justify-content-center">
-      <%= link_to "ログイン画面へ", '/users/sign_in', method: :get, :class => "btn btn-info" %>
+      <%= link_to "ログイン画面へ", '/users/sign_in', method: :get, :class => "btn-usr" %>
     </div>
     <div class="col-9 d-flex justify-content-center">
-      <%= link_to "新規登録画面へ", '/users/sign_up', method: :get, :class => "btn btn-info" %>
+      <%= link_to "新規登録画面へ", '/users/sign_up', method: :get, :class => "btn-usr" %>
     </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
 
 <div class="sample">
   <%= render 'stocks/layouts/sample' %>
-</div> 
-
+</div>
