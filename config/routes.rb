@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'stocks#top'
+  get 'top', to: 'stocks#top'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'}
@@ -8,8 +10,6 @@ Rails.application.routes.draw do
       put '/:id/consumed_update' => 'stocks#consumed_update'
     end
   end
-  root to: 'stocks#top'
-  get 'top', to: 'stocks#top'
 
   get 'confirm_stocks', to: 'stocks#confirm'
   get 'confirm_update', to: 'stocks#confirm_update'
@@ -25,8 +25,6 @@ Rails.application.routes.draw do
 
   get "stock_list/:per" => "stocks#stocks_page"
   get "past_list/:per" => "stocks#past_page"
-
-  resources :password_resets,     only: [:new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
