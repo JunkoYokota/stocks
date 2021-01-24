@@ -1,23 +1,10 @@
+<%= form_tag("/confirm_stocks", method: :get) do %>
 <div class="row">
   <div class="col-5">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <%= @page %>
-      <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><%= link_to(" 5", "/stock_list/5") %></li>
-        <li><%= link_to("15", "/stock_list/15") %></li>
-        <li><%= link_to("30", "/stock_list/30") %></li>
-        <li><%= link_to("50", "/stock_list/50") %></li>
-      </ul>
-      <label>件ずつ表示する</label>
-    </div>
+    <%= render 'stocks/layouts/list' %>
   </div>
   <div class="col-5 ml-auto text-center">
-    <a href="/index_past">
-      <i class="far fa-star"></i>
-      <span class="d-non d-sm-inline pl-1">過去のstocks</span></a>
+    <a href="/index_past"><i class="fas fa-clipboard"></i><span class="d-non d-sm-inline pl-1">過去のstocks</span></a>
   </div>
 </div>
 <div class="stocks">
@@ -32,6 +19,7 @@
             <% else %>
             <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
             <% end %>
+
             <% if stock.tags %>
             <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, class: "tag" %></span>
             <% else %>
@@ -53,13 +41,13 @@
           <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
           <% end %>
           <% if stock.consumed %>
-            <span class="fas far-star btn-sticky"><%= link_to "消費済みにする", "/stocks/#{stock.id}", method: :get, class: "tag" %></span>
-            <% else %>
-            <span class="fc far-star btn-sticky"><%= link_to "再登録をする", "/stocks/#{stock.id}/consumed_edit", method: :get, class: "tag" %></span>
+          <span class="fas fa-ban btn-sticky"><%= link_to "消費済みにする", "/stocks/#{stock.id}", method: :get, class: "tag" %></span>
+          <% else %>
+          <span class="fc fa-ban btn-sticky"><%= link_to "再登録をする", "/stocks/#{stock.id}/consumed_edit", method: :get, class: "tag" %></span>
           <% end %>
         </div>
         <div class="col-1 justify-content-end d-flex align-items-end">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group">
             <li class="edit"><%= link_to '編集する', "/stocks/#{stock.id}/edit", method: :get %></li>
             <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :get %></li>
           </div>
@@ -69,4 +57,10 @@
   </ul>
   <% end %>
 </div>
-<%= will_paginate @stocks %>
+<%= will_paginate @stocks, class: "page" %>
+<div class="btn-group">
+  <%= submit_tag "まとめて編集", name: "edit_all", class: "btn btn-outline-info" %>
+  <%= submit_tag "まとめて消費済にする", name: 'consumed', class: "btn btn-outline-warning" %>
+  <%= submit_tag "一括削除", name: 'delete_all', class: "btn btn-outline-warning" %>
+</div>
+<% end %>
