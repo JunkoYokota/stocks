@@ -3,26 +3,26 @@
     <ul class="row nav justify-content-end no-gutters">
       <li class="col-sm-2 nav-item justify-content-start">
         <i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">
-        <%= link_to "新規登録", new_registration_path(resource_name) %></span>
+          <%= link_to "新規登録", new_registration_path(resource_name) %></span>
       </li>
       <li class="col-sm-2 nav-item1 justify-content-start">
         <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">Log in</span>
+        <span class="d-non d-sm-inline pl-1">ログイン</span>
       </li>
     </ul>
   </div>
-  <div class="panel_area">
-    <div class="stocks">
-      <ul class="row no-gutters">
-        <label class="col-12">
-          <div class="product_name">
-            <li>
-              <h2>ログインはこちら</h2>
-            </li>
-          </div>
-          <div class="row justify-content-between border_bg">
-            <div class="col-10">
+  <div class="user_panel_area">
+    <ul class="row justify-content-center no-gutters">
+      <div class="col-11">
+        <div class="product_name">
+          <li>
+            <h2>ログインはこちら</h2>
+          </li>
+        </div>
+        <div class="row justify-content-between border_bg">
+          <div class="col-10">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<<<<<<< HEAD
               <div class="box-email">
                 <li><%= f.label :email %></li>
                 <li><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'email' %></li>
@@ -38,17 +38,33 @@
                   <%= f.label :remember_me %></li>
                 </div>
               <% end %>
+=======
+            <div class="box-email">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'email' %>
             </div>
+            <div class="box-password">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "current-password", class: 'pass' %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+>>>>>>> creating-the-top-screen
+            </div>
+            <% end %>
           </div>
-          <div class="actions">
+        </div>
+        <div class="actions">
           <%= f.submit "ログイン", class: 'btn-usr' %>
           <% end %>
-          </div>
+        </div>
         </label>
-      </ul>
-    </div>  
-    <div class="col-9">
-      <%= render "users/shared/links" %>
-    </div>
+    </ul>
   </div>
+  <div class="col-9">
+    <%= render "users/shared/links" %>
+  </div>
+</div>
 </div>

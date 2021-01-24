@@ -1,9 +1,17 @@
 <%- if controller_name != 'sessions' %>
+<<<<<<< HEAD
 <%= link_to "ログイン画面へ", new_session_path(resource_name), class: 'btn-usr' %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 <%= link_to "新規登録画面へ", new_registration_path(resource_name), class: 'btn-usr' %><br />
+=======
+  <%= link_to "ログイン画面へ", new_session_path(resource_name), class: 'btn-usr' %><br />
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "新規登録画面へ", new_registration_path(resource_name), class: 'btn-usr' %><br />
+>>>>>>> creating-the-top-screen
 <% end %>
 
 

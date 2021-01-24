@@ -1,10 +1,11 @@
 <div class="header">
   <div class="row">
-    <div class="col-9">
-      <h3><%= current_user.user_name %>さん<a href="/stocks/new">Stocked UP!</a></h3>
+    <div class="col-6">
+      <h3><%= current_user.user_name %>さん<a href="/stocks/new" aria-label="在庫登録はこちらから！" title="在庫登録はこちらから">Stocked UP!</a></h3>
     </div>
-    <div class="col-3">
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn btn-info" %>
+    <div class=" col-6 text-right">
+          <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn-usr" %>
+          <%= button_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn-usr" %>
     </div>
   </div>
 </div>
