@@ -2,15 +2,8 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
-      <li class="col-sm-2 nav-item justify-content-start">
-        <a href="/stocks">
-          <i class="far fa-lightbulb"></i>
-          <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
-      </li>
-      <li class="col-sm-2 nav-item1 justify-content-start">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">記録中</span>
-      </li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">記録中</span></li>
     </ul>
   </div>
   <div class="panel_area">
@@ -18,14 +11,15 @@
       <%= render 'error_form' %>
       <ul class="row no-gutters">
         <label class="col-12">
-        <%= form_with model: @stock, local: true do |form| %>
+        <%= form_with model: @stock do |form| %>
           <div class="product_name">
             <li>
               <h2><%= form.text_field :product_name, placeholder: '商品名' %></h2>
             </li>
           </div>
+        </label>
         <div class="row justify-content-between border_bg">
-          <div class="col-10">
+          <div class="col-11">
             <li>
               <%= form.label :expiration %>
               <%= form.date_field :expiration, placeholder: '賞味期限' %>
@@ -40,14 +34,12 @@
             </li><br />
             <li>
               <%= form.label :content %><br />
-              <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで' %>
+              <%= form.rich_text_area :content, placeholder: '<詳細・メモ>　添付ファイルは2つまで　　　　　　　　　　　　　　文字入力は右クリックで' %>
             </li>
             <%= form.submit "登録する", class: 'btn-usr' %>
           </div>
         </div>
         <% end %>
-      </div>
-    </ul>
+      </ul>
   </div>
 </div>
-<a href="/stocks/">Home!</a>

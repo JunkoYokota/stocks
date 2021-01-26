@@ -12,16 +12,16 @@ class StocksController < ApplicationController
   
   def stocks_page
     @page = params[:per]
-    @stocks = Stock.paginate(page: params[:page], per_page: @page)
+    @stocks = Stock.where(consumed: true, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
     render("stock_list")
   end
   def past
-    @page = 5
+    @page = 10
     @stocks = Stock.where(consumed: false, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
   end
   def past_page
     @page = params[:per]
-    @stocks = Stock.paginate(page: params[:page], per_page: @page)
+    @stocks = Stock.where(consumed: false, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
     render("past_list")
   end
 

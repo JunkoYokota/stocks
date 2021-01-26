@@ -2,93 +2,11 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
-    <li class="col-sm-2 nav-item justify-content-start">
-      <a href="/stocks">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
-      </li>
-      <li class="col-sm-2 nav-item1 justify-content-start">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">過去のstocks</span>
-      </li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">過去のstocks</span></li>
     </ul>
   </div>
   <div class="panel_area">
-  <div class="row">
-    <div class="col-5">
-      <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <%= @page %>
-      <span class="caret"></span>
-      </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <ul>
-            <li><%= link_to(" 5", "/past_list/5") %></li>
-            <li><%= link_to("15", "/past_list/15") %></li>
-            <li><%= link_to("30", "/past_list/30") %></li>
-            <li><%= link_to("50", "/past_list/50") %></li>
-          </ul>
-        </ul>
-        <label>件ずつ表示する</label>
-      </div>
-    </div>
-    <div class="col-5 ml-auto text-center">
-      <span class="d-non d-sm-inline pl-1">過去のstocks</span>
-    </div>
-  </div>
-  <div class="stocks">
-    <% @stocks.each do |stock| %>
-    <ul class="row no-gutters">
-      <label class="col-12">
-        <div class="product_name">
-          <li>
-            <div class="sticky">
-              <% if stock.favorites %>
-              <span class="fas fas-heart btn-sticky-fev1"><%= link_to "お気に入り", stock_path(stock, stock: {favorites: false}), method: :put, class: 'fev' %></span>
-              <% else %>
-              <span class="fb far-heart btn-sticky-fev0"><%= link_to "add love", stock_path(stock, stock: {favorites: true}), method: :put, class: 'fev' %></span>
-              <% end %>
-              <% if stock.tags %>
-              <span class="fas far-star btn-sticky-tag1"><%= link_to "ふせん", stock_path(stock, stock: {tags: false}), method: :put, class: "tag" %></span>
-              <% else %>
-              <span class="fc far-star btn-sticky-tag0"><%= link_to "ふせんする", stock_path(stock, stock: {tags: true}), method: :put, class: "tag" %></span>
-              <% end %>
-            </div>
-            <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>
-            <h2><%= stock.product_name %></h2>
-          </li>
-        </div>
-        <div class="row justify-content-between border_bg">
-          <div class="col-10">
-            <li> ｜ 賞味期限 ｜ <%= stock.expiration %> ｜ </li><br />
-            <% if stock.open_date.present? %>
-            <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
-            <% end %>
-            <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li><br />
-            <% if stock.content.present? %>
-            <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
-            <% end %>
-            <% if stock.consumed %>
-            <span class="fas far-star btn-sticky"><%= link_to "消費済みにする", stock_path(stock, stock: {consumed: false}), method: :put, class: "tag" %></span>
-            <% else %>
-            <span class="fc far-star btn-sticky"><%= link_to "再登録をする", "/stocks/#{stock.id}/consumed_edit", method: :get, class: "tag" %></span>
-          <% end %>
-          </div>
-          <div class="col-1 justify-content-end d-flex align-items-end">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <li class="edit"><%= link_to 'Stock up!', "/stocks/#{stock.id}/", method: :get %></li>
-              <li class="delete"><%= link_to '削除する', "/stocks/#{stock.id}/", method: :get %></li>
-            </div>
-          </div>
-        </div>
-      </label>
-    </ul>
-    <% end %>
-  </div>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-outline-info" %>
-    <%= submit_tag "消費済にする", :name => 'consumed', :class => "btn btn-outline-warning" %>
-    <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-outline-warning" %>
+    <%= render 'stocks/layouts/form' %>
   </div>
 </div>
-<a href="/stocks/">Home!</a>
