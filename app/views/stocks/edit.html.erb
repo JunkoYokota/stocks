@@ -2,15 +2,8 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
-    <li class="col-sm-2 nav-item justify-content-start">
-      <a href="/stocks">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
-      </li>
-      <li class="col-sm-2 nav-item1 justify-content-start">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">編集中</span>
-      </li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">編集中</span></li>
     </ul>
   </div>
   <div class="panel_area">
@@ -18,7 +11,7 @@
       <%= render 'error_form' %>
       <ul class="row no-gutters">
         <label class="col-12">
-          <%= form_with model: @stock do |form| %>
+        <%= form_with model: @stock do |form| %>
           <div class="product_name">
             <li>
               <%= render 'stocks/layouts/sticky' %>
@@ -27,7 +20,7 @@
           </div>
         </label>
         <div class="row justify-content-between border_bg">
-          <div class="col-10">
+          <div class="col-11">
             <li>
               <%= form.label :expiration %>
               <%= form.date_field :expiration, placeholder: '賞味期限', value: @stock.expiration %>
@@ -42,15 +35,13 @@
             </li><br />
             <li>
               <%= form.label :content %><br />
-              <%= form.rich_text_area :content, placeholder: '詳細・メモ　添付ファイルは2つまで', value: @stock.content %>
+              <%= form.rich_text_area :content, placeholder: '<詳細・メモ>　添付ファイルは2つまで　　　　　　　　　　　　　　文字入力は右クリックで', value: @stock.content %>
             </li>
-            <%= form.submit "更新する", class: 'btn btn-info' %>
+            <%= form.submit "更新する", class: 'btn-usr' %>
           </div>
         </div>
         <% end %>
+      </ul>
     </div>
-    </ul>
   </div>
 </div>
-</div>
-<a href="/stocks/">Home!</a>

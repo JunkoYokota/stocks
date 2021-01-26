@@ -1,25 +1,25 @@
-  @font-face {
-    font-family: 'JapanSans80';
-    src: url('fonts/JapanSans/JapanSans80.eot');
-    src: url('fonts/JapanSans/JapanSans80.eot?#iefix') format('embedded-opentype'),
-    url('fonts/JapanSans/JapanSans80.woff') format('woff'),
-    url('fonts/JapanSans/JapanSans80.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'smartfontUI';
-    src: url('fonts/smartfontUI.otf');
-  }
-  @font-face {
-    font-family: 'chihaya_c';
-    src: url('fonts/chihaya_c.ttf');
-  }
- @font-face {
-   font-family: 'Nchihaya';
-   src: url(fonts/Nchihaya+.ttf);
- }
- 
+@font-face {
+  font-family: 'JapanSans80';
+  src: url('fonts/JapanSans/JapanSans80.eot');
+  src: url('fonts/JapanSans/JapanSans80.eot?#iefix') format('embedded-opentype'),
+  url('fonts/JapanSans/JapanSans80.woff') format('woff'),
+  url('fonts/JapanSans/JapanSans80.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'smartfontUI';
+  src: url('fonts/smartfontUI.otf');
+}
+@font-face {
+  font-family: 'chihaya_c';
+  src: url('fonts/chihaya_c.ttf');
+}
+@font-face {
+  font-family: 'Nchihaya';
+  src: url(fonts/Nchihaya+.ttf);
+}
+
 h1,h2,h3,h4,h5,h6,body {
   letter-spacing: 0.12em;
   font-family: 'Nchihaya','JapanSans80','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ Pro W3', sans-serif;
@@ -62,6 +62,7 @@ a:hover{
   padding: 15px;
   z-index: 2;
   background:rgba(131,161,42,0.7);
+  border-radius: 24% 1.5% 10% 1.5% / 1.5% 20% 1.5% 18%;
   font-family: 'Nchihaya';
 }
 .top h2{
@@ -266,11 +267,20 @@ a:hover{
   z-index:0;
 }
 .panel_area .col-5{
-  padding: 5px 30px;
+  padding: 0 30px;
 }
 .panel_area .col-12{
   background: linear-gradient(#fff 95%, #87CEFA 5%);
   background-size: 70% 23px;
+}
+.panel_area .col-7{
+  padding-left: 45px;
+  font-size: 20px;
+  vertical-align: bottom;
+}
+.panel_area .col-7 h5{
+  font-size: 18px;
+  margin-bottom: 0;
 }
 .user_panel_area{
   width:100%;
@@ -295,7 +305,25 @@ a:hover{
   margin: auto;
   width: 80%;
 }
-
+.clipboard a{
+  color: #777474;
+  font-size: 18px;
+  letter-spacing: 0em;
+  padding: 0;
+}
+.clipboard a:hover{
+  color: #272626;
+}
+.stocks .col-10{
+  letter-spacing: 0em;
+}
+.stocks .col-11{
+  letter-spacing: 0em;
+}
+.stocks .col-11 .btn-usr{
+  float: right;
+  transform: translateX(35px);
+}
 // 商品名
 .product_name{
   display: flex;
@@ -321,7 +349,7 @@ a:hover{
   border-radius: 3px;
   margin: 0 15px 2px;
   padding: 0 7px;
-  background-color: #ccffcc;
+  background-color: #b9d66a;
 }
 //ふせん
 .product_name i{
@@ -512,54 +540,71 @@ a:hover{
 }
 .user_panel_area .col-10{
   padding: 22px 0 0 25px;
+  letter-spacing: 0.1em;
 }
 .user_panel_area .col-10 li{
   font-size: 14px;
   line-height: 18px;
 }
+.col-10 a:hover{
+  color: #272626;
+}
+.consumed{
+  color: #777474;
+  font-size: 15px;
+}
+.consumed .fas, .consumed .far{
+  font-family: 'FontAwesome', 'Nchihaya';
+  font-weight: 400;
+}
+
 // ボタン
-.btn-group{
-  text-align: left;
-  margin: 1% 0 1% 7%;
+.col-1 .btn-group{
   letter-spacing: -0.1em;
 }
-.btn-group .edit a{
-  color:#fff;
-  width:80px;
+.btn-group{
+  margin: 1% 0 1% 7%;
+}
+.btn-outline-info, .btn-outline-worning, .btn-outline-danger{
+  padding: 0.3em;
+  font-size: 15px;
+  letter-spacing: -0.1em;
+}
+.btn-group .edit a, .btn-group .delete a{
+  color: #fff;
+  width: 80px;
   margin: 10px 0;
-  display:inline-block;
-  text-align:center;
-  padding:8px 0 8px;
-  font-size:18px; cursor:pointer;
-  transition:ease 0.2s;
-  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
+  display: inline-block;
+  text-align: center;
+  padding: 5px 0 5px;
+  font-size: 16px; cursor:pointer;
+  transition: ease 0.2s;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
   transform:translateY(8px);
   position:relative;
+}
+.btn-group .edit a{
   background: #009C95;
-  border:4px solid #009C95;
-  border-bottom:none;
+  border: 4px solid #009C95;
+  border-bottom: none;
 }
 .btn-group .delete a{
-  color:#fff;
-  width:80px;
-  margin: 10px 0;
-  display:inline-block;
-  text-align:center;
-  padding:8px 0 8px;
-  font-size:18px; cursor:pointer;
-  transition:ease 0.2s;
-  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
-  transform:translateY(8px);
-  position:relative;
-  background:#DD9BA5;
-  border:4px solid #DD9BA5;
-  border-bottom:none;
+  background: #DD9BA5;
+  border: 4px solid #DD9BA5;
+  border-bottom: none;
 }
 .btn-group a:hover{
-  background: #afd6d8;
   text-decoration: none;
-  transition:ease 0.2s;
-  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
+  transition: ease 0.2s;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
+  border: none;
+  transform: translateY(12px);
+}
+.btn-group .edit a:hover{
+  background: #025043;
+}
+.btn-group .delete a:hover{
+  background: #da3850;
 }
 // ログイン画面
 .box-name input[type="text"], .box-email input[type="email"], .box-password input[type="password"] {
@@ -585,38 +630,42 @@ a:hover{
 .actions{
   text-align: right;
 }
-
 .alert i{
   font-size: 20px;
   padding: 13px;
   color: red;
 }
 .pagination {
-  font-size: 15px;
-  padding: 0;
+  font-size: 18px;
+  padding: 0 20px 0 0;
   float: right;
+  color: #007bff;
 }
-
-.pagination > * {
-  margin-right: 0;
-  padding: 0;
-}
-
 .pagination a:hover {
   background: #202020 none repeat scroll 0 0;
   text-shadow: 1px 1px 1px #171717;
 }
-
 .pagination a:active {
   text-shadow: none;
 }
-
 .pagination .current {
   background: #202020 none repeat scroll 0 0;
   color: white;
   text-shadow: 1px 1px 1px #171717;
 }
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
 
-.pagination .disabled {
-  color: #C0C0C0;
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }

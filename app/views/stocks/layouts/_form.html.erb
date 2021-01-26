@@ -1,11 +1,25 @@
 <%= form_tag("/confirm_stocks", method: :get) do %>
 <div class="row">
+  <% if current_page?(index_near_path) %>
+  <div class="col-7">
+    <h5>※3ヶ月以内に使い切ってください！</h5>
+  </div>
+  <% end %>
+  <% if current_page?(index_past_path) %>
+    <div class="col-5">
+    <%= render 'stocks/layouts/list' %>
+    </div>
+  <% end %>
+  <% if current_page?(stocks_path) %>
   <div class="col-5">
     <%= render 'stocks/layouts/list' %>
   </div>
-  <div class="col-5 ml-auto text-center">
-    <a href="/index_past"><i class="fas fa-clipboard"></i><span class="d-non d-sm-inline pl-1">過去のstocks</span></a>
+  <% end %>
+  <% unless current_page?(index_past_path) %>
+  <div class="col-5 ml-auto text-center clipboard">
+    <a href="/index_past"><i class="far fa-clipboard"></i><span class="d-non d-sm-inline pl-1">過去のstocks</span></a>
   </div>
+  <% end %>
 </div>
 <div class="stocks">
   <% @stocks.each do |stock| %>
@@ -41,9 +55,13 @@
           <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
           <% end %>
           <% if stock.consumed %>
-          <span class="fas fa-ban btn-sticky"><%= link_to "消費済みにする", "/stocks/#{stock.id}", method: :get, class: "tag" %></span>
+            <%= link_to "/stocks/#{stock.id}", method: :get, class: "consumed" do %>
+              <i class="fas fa-clipboard"></i> 消費済みにする
+            <% end %>
           <% else %>
-          <span class="fc fa-ban btn-sticky"><%= link_to "再登録をする", "/stocks/#{stock.id}/consumed_edit", method: :get, class: "tag" %></span>
+            <%= link_to "/stocks/#{stock.id}/consumed_edit", method: :get, class: "consumed" do %>
+              <i class="far fa-clipboard"></i> 再登録をする
+            <% end %>
           <% end %>
         </div>
         <div class="col-1 justify-content-end d-flex align-items-end">
@@ -61,6 +79,6 @@
 <div class="btn-group">
   <%= submit_tag "まとめて編集", name: "edit_all", class: "btn btn-outline-info" %>
   <%= submit_tag "まとめて消費済にする", name: 'consumed', class: "btn btn-outline-warning" %>
-  <%= submit_tag "一括削除", name: 'delete_all', class: "btn btn-outline-warning" %>
+  <%= submit_tag "一括削除", name: 'delete_all', class: "btn btn-outline-danger" %>
 </div>
 <% end %>

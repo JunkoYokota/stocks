@@ -1,88 +1,87 @@
- <div class="wrap">
-   <div class="tab_area">
-     <ul class="row nav justify-content-end no-gutters">
-       <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></li>
-       <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-bell"></i><span class="d-non d-sm-inline pl-1">賞味期限間近</span></li>
-       <li class="col-sm-2 nav-item justify-content-start"><i class="fas fa-exclamation-triangle"></i><span class="d-non d-sm-inline pl-1">賞味期限切れ</span></li>
-       <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-heart"></i><span class="d-non d-sm-inline pl-1">お気に入り</span></li>
-       <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-star"></i><span class="d-non d-sm-inline pl-1">ふせん</span></li>
-     </ul>
-   </div>
-   <div class="panel_area">
-     <div class="row">
-       <div class="col-5">
-         <div class="dropdown">
-           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-             <%= @page %>
-             <span class="caret"></span>
-           </button>
-           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-             <ul>
-               <li><%= link_to(" 5", "/past_list/5") %></li>
-               <li><%= link_to("15", "/past_list/15") %></li>
-               <li><%= link_to("30", "/past_list/30") %></li>
-               <li><%= link_to("50", "/past_list/50") %></li>
-             </ul>
-           </ul>
-           <label>件ずつ表示する</label>
-         </div>
-       </div>
-       <div class="col-5 ml-auto text-center">
-         <span class="d-non d-sm-inline pl-1">過去のstocks</span>
-       </div>
-     </div>
-     <div class="stocks">
-       <% @stocks.each do |stock| %>
-       <ul class="row no-gutters">
-         <label class="col-12">
-           <div class="product_name">
-             <li>
-               <div class="sticky">
-                 <% if stock.favorites %>
-                 <span class="fas fas-heart btn-sticky-fev1 fev">お気に入り</span>
-                 <% else %>
-                 <span class="fb far-heart btn-sticky-fev0 fev">add love</span>
-                 <% end %>
-                 <% if stock.tags %>
-                 <span class="fas far-star btn-sticky-tag1 tag">ふせん</span>
-                 <% else %>
-                 <span class="fc far-star btn-sticky-tag0 tag">ふせんする</span>
-                 <% end %>
-               </div>
-               <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>
-               <h2><%= stock.product_name %></h2>
-             </li>
-           </div>
-           <div class="row justify-content-between border_bg">
-             <div class="col-10">
-               <li> ｜ 賞味期限 ｜ <%= stock.expiration %> ｜ </li><br />
-               <% if stock.open_date.present? %>
-               <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
-               <% end %>
-               <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li><br />
-               <% if stock.content.present? %>
-               <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
-               <% end %>
-               <% if stock.consumed %>
-               <span class="fas far-star btn-sticky tag">消費済みにする</span>
-               <% else %>
-               <span class="fc far-star btn-sticky tag">再登録する</span>
-               <% end %>
-             </div>
-             <div class="col-1 justify-content-end d-flex align-items-end">
-               <div class="btn-group sample">
-                 <button class="edit">編集する</button>
-                 <button class="delete">削除する</button>
-               </div>
-             </div>
-           </div>
-         </label>
-       </ul>
-       <% end %>
-     </div>
-     <div class="btn-group">
-       <button class='btn btn-outline-info edit_all'>まとめて編集</button>
-       <button class='btn btn-outline-warning consumed'>消費済にする</button>
-       <button class='btn btn-outline-warning delete_all'>一括削除</button>
-     </div>
-   </div>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-bell"></i><span class="d-non d-sm-inline pl-1">賞味期限間近</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><i class="fas fa-exclamation-triangle"></i><span class="d-non d-sm-inline pl-1">賞味期限切れ</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-heart"></i><span class="d-non d-sm-inline pl-1">お気に入り</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><i class="far fa-star"></i><span class="d-non d-sm-inline pl-1">ふせん</span></li>
+    </ul>
+  </div>
+  <div class="panel_area">
+    <div class="row">
+      <div class="col-5">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            10
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li> 5</li>
+            <li>15</li>
+            <li>30</li>
+            <li>50</li>
+          </ul>
+          <label>件ずつ表示する</label>
+        </div>
+      </div>
+      <div class="col-5 ml-auto text-center">
+        <span class="d-non d-sm-inline pl-1">過去のstocks</span>
+      </div>
+    </div>
+    <div class="stocks">
+      <% @stocks.each do |stock| %>
+      <ul class="row no-gutters">
+        <label class="col-12">
+          <div class="product_name">
+            <li>
+              <div class="sticky">
+                <% if stock.favorites %>
+                <span class="fas fas-heart btn-sticky-fev1 fev">お気に入り</span>
+                <% else %>
+                <span class="fb far-heart btn-sticky-fev0 fev">add love</span>
+                <% end %>
+                <% if stock.tags %>
+                <span class="fas far-star btn-sticky-tag1 tag">ふせん</span>
+                <% else %>
+                <span class="fc far-star btn-sticky-tag0 tag">ふせんする</span>
+                <% end %>
+              </div>
+              <h2 class="check_box"><%= check_box_tag 'stocks_ids[]', stock.id %></h2>
+              <h2><%= stock.product_name %></h2>
+            </li>
+          </div>
+          <div class="row justify-content-between border_bg">
+            <div class="col-10">
+              <li> ｜ 賞味期限 ｜ <%= stock.expiration %> ｜ </li><br />
+              <% if stock.open_date.present? %>
+              <li> ｜ 開封日 ｜ <%= stock.open_date %> ｜ </li><br />
+              <% end %>
+              <li> ｜ メーカー・購入店舗等 ｜ <%= stock.detail %></li><br />
+              <% if stock.content.present? %>
+              <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
+              <% end %>
+              <% if stock.consumed %>
+              <span class="fas far-star btn-sticky tag">消費済みにする</span>
+              <% else %>
+              <span class="fc far-star btn-sticky tag">再登録する</span>
+              <% end %>
+            </div>
+            <div class="col-1 justify-content-end d-flex align-items-end">
+              <div class="btn-group sample">
+                <button class="edit">編集する</button>
+                <button class="delete">削除する</button>
+              </div>
+            </div>
+          </div>
+        </label>
+      </ul>
+      <% end %>
+    </div>
+    <div class="btn-group">
+      <button class='btn btn-outline-info edit_all'>まとめて編集</button>
+      <button class='btn btn-outline-warning consumed'>消費済にする</button>
+      <button class='btn btn-outline-warning delete_all'>一括削除</button>
+    </div>
+  </div>
+</div>

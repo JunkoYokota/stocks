@@ -1,22 +1,15 @@
 <%= render 'stocks/layouts/header' %>
-  <div class="wrap">
-    <div class="tab_area">
-      <ul class="row nav justify-content-end no-gutters">
-        <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
-        <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-bell"></i><span class="d-non d-sm-inline pl-1">賞味期限間近</span></li>
-        <li class="col-sm-2 nav-item justify-content-start"><a href="/index_expire"><i class="fas fa-exclamation-triangle"></i><span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a></li>
-        <li class="col-sm-2 nav-item justify-content-start"><a href="/index_favorites"><i class="far fa-heart"></i><span class="d-non d-sm-inline pl-1">お気に入り</span></li>
-        <li class="col-sm-2 nav-item justify-content-start"><a href="/index_tags"><i class="far fa-star"></i><span class="d-non d-sm-inline pl-1">ふせん</span></a></li>
-      </ul>
-    </div>
-    <div class="panel_area">
-    3ヶ月以内に使い切ってください。
-      <%= form_tag("/confirm_stocks", method: :get) do %>
-      <%= render 'stocks/layouts/form_tabs' %>
-      <div class="btn-group">
-        <%= submit_tag "まとめて編集", :name => "edit_all" , :class => "btn btn-info" %>
-        <%= submit_tag "一括削除", :name => 'delete_all', :class => "btn btn-warning" %>
-      </div>
-      <% end %>
-    </div>
+<div class="wrap">
+  <div class="tab_area">
+    <ul class="row nav justify-content-end no-gutters">
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-bell"></i><span class="d-non d-sm-inline pl-1">賞味期限間近</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/index_expire"><i class="fas fa-exclamation-triangle"></i><span class="d-non d-sm-inline pl-1">賞味期限切れ</span></a></li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/index_favorites"><i class="far fa-heart"></i><span class="d-non d-sm-inline pl-1">お気に入り</span></li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/index_tags"><i class="far fa-star"></i><span class="d-non d-sm-inline pl-1">ふせん</span></a></li>
+    </ul>
   </div>
+  <div class="panel_area">
+    <%= render 'stocks/layouts/form' %>
+  </div>
+</div>

@@ -9,7 +9,7 @@
       </li>
       <li class="col-sm-2 nav-item1 justify-content-start">
         <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">編集中</span>
+        <span class="d-non d-sm-inline pl-1">確認画面</span>
       </li>
     </ul>
   </div>
@@ -24,23 +24,20 @@
             </li>
           </div>
           <div class="row justify-content-between border_bg">
-            <div class="col-10">
+            <div class="col-11">
               <li> ｜ 賞味期限 ｜ <%= @stock.expiration %> ｜ </li><br />
               <% if @stock.open_date.present? %>
               <li> ｜ 開封日 ｜ <%= @stock.open_date %> ｜ </li><br />
               <% end %>
-              <li> ｜ メーカー・購入店舗等 ｜ <%= @stock.detail %></li>
+              <li> ｜ メーカー・購入店舗等 ｜ <%= @stock.detail %></li><br />
               <li> ｜ 詳細・メモ ｜ <%= @stock.content %></li>
             </div>
-            <div class="col-1 justify-content-end d-flex align-items-end">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <% if @stock.consumed == false %>
-                <li class="edit"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %></span></li>
-                <% else %>
-                <li class="edit"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %></span></li>
-                <% end %>
-                <li class="edit"><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %></span></li>
-              </div>
+            <div class="btn-group">
+              <% if @stock.consumed == false %>
+              <%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %>
+              <% else %>
+              <%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %>
+              <% end %><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %>
             </div>
           </div>
         </label>
