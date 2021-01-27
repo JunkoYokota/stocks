@@ -61,16 +61,12 @@
               <% if stock.content.present? %>
               <li> ｜ 詳細・メモ ｜ <%= stock.content %></li>
               <% end %>
-              <% if stock.consumed %>
-              <span class="fas far-star btn-sticky tag">消費済みにする</span>
-              <% else %>
-              <span class="fc far-star btn-sticky tag">再登録する</span>
-              <% end %>
+              <span class="consumed"><i class="fas fa-clipboard"></i> 消費済みにする</span>
             </div>
             <div class="col-1 justify-content-end d-flex align-items-end">
-              <div class="btn-group sample">
-                <button class="edit">編集する</button>
-                <button class="delete">削除する</button>
+              <div class="btn-group">
+                <li class="edit">編集する</li>
+                <li class="delete">削除する</li>
               </div>
             </div>
           </div>
@@ -81,7 +77,7 @@
     <div class="btn-group">
       <button class='btn btn-outline-info edit_all'>まとめて編集</button>
       <button class='btn btn-outline-warning consumed'>消費済にする</button>
-      <button class='btn btn-outline-warning delete_all'>一括削除</button>
+      <button class='btn btn-outline-danger delete_all'>一括削除</button>
     </div>
   </div>
 </div>

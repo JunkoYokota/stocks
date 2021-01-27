@@ -2,15 +2,8 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
-    <li class="col-sm-2 nav-item justify-content-start">
-      <a href="/stocks">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
-      </li>
-      <li class="col-sm-2 nav-item1 justify-content-start">
-        <i class="far fa-lightbulb"></i>
-        <span class="d-non d-sm-inline pl-1">確認画面</span>
-      </li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">確認画面</span></li>
     </ul>
   </div>
   <div class="panel_area">
@@ -32,12 +25,13 @@
               <li> ｜ メーカー・購入店舗等 ｜ <%= @stock.detail %></li><br />
               <li> ｜ 詳細・メモ ｜ <%= @stock.content %></li>
             </div>
-            <div class="btn-group">
+            <div class="col-11 d-flex justify-content-end align-items-end btn-group">
               <% if @stock.consumed == false %>
-              <%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put, :name => 'to_index' %>
+                <li class="show"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put %></li>
               <% else %>
-              <%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put, :name => 'to_index' %>
-              <% end %><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %>
+                <li class="show"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
+              <% end %>
+              <li class="show-delete"><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %></li>
             </div>
           </div>
         </label>
@@ -45,4 +39,3 @@
     </div>
   </div>
 </div>
-<a href="/stocks/">Home!</a>

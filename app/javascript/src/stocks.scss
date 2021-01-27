@@ -19,17 +19,25 @@
   font-family: 'Nchihaya';
   src: url(fonts/Nchihaya+.ttf);
 }
-
 h1,h2,h3,h4,h5,h6,body {
   letter-spacing: 0.12em;
   font-family: 'Nchihaya','JapanSans80','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ Pro W3', sans-serif;
 }
-
 a:link{
   text-decoration: none;
 }
 a:hover{
   text-decoration: none;
+}
+h3 a{
+  font-weight: bold;
+  color: #363b83;
+}
+h3 a:hover{
+  color: #025043;
+}
+.stocks h2{
+  font-family: 'smartfontUI';
 }
 .no-gutters {
   margin: 0;
@@ -81,27 +89,17 @@ a:hover{
   z-index: 1;
   opacity: 0.6;
 }
-.top .btn-usr{
-  color: #fff;
-  margin: 10px 10px;
-  border-radius : 0.3em;
-  display: inline-block;
-  text-align: center;
-  padding: 5px 10px 5px;
-  font-size: 18px; cursor: pointer;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
-  position: relative;
-  background: #009C95;
-  border: 4px solid #009C95;
-  transition: ease 0.2s;
-}
-.btn-usr:hover {
-  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
-               6px 0px 15px rgba(255, 255, 240, 0.83);
-}
 .header form{
   padding: 0em;
   display: inline;
+}
+// ボタン
+.btn-group{
+  letter-spacing: -0.1em;
+  margin: 1% 0 1% 7%;
+}
+.btn-group .consumed{
+  color: #ffc107;
 }
 .btn-usr{
   color: #fff;
@@ -118,42 +116,86 @@ a:hover{
   border: 4px solid #009C95;
   transition: ease 0.2s;
 }
-.sample .btn-group{
-  text-align: left;
-  margin: 1% 0 1% 7%;
+.top .btn-usr{
+  margin: 10px 10px;
+  font-size: 18px; cursor: pointer;
+}
+.btn-usr:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+                6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+.btn-outline-info, .btn-outline-worning, .btn-outline-danger{
+  padding: 0.3em;
+  font-size: 15px;
   letter-spacing: -0.1em;
 }
-.sample .btn-group .edit{
-  color:#fff;
-  width:80px;
+.edit a, .delete a, .show a, .show-delete a, .sample .edit, .sample .delete, .f-btn{
+  color: #fff;
   margin: 10px 0;
-  display:inline-block;
-  text-align:center;
-  padding:8px 0 8px;
-  font-size:18px; cursor:pointer;
-  transition:ease 0.2s;
-  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
+  display: inline-block;
+  text-align: center;
+  padding: 5px 0 5px;
+  font-size: 16px; cursor:pointer;
+  transition: ease 0.2s;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
   transform:translateY(8px);
   position:relative;
-  background: #009C95;
-  border:4px solid #009C95;
-  border-bottom:none;
 }
-.sample .btn-group .delete{
-  color:#fff;
-  width:80px;
-  margin: 10px 0;
-  display:inline-block;
-  text-align:center;
-  padding:8px 0 8px;
-  font-size:18px; cursor:pointer;
-  transition:ease 0.2s;
-  border-radius:30% 5% 2% 5%/ 14% 40% 25% 25%;
-  transform:translateY(8px);
-  position:relative;
-  background:#DD9BA5;
-  border:4px solid #DD9BA5;
-  border-bottom:none;
+.edit a, .sample .edit, .f-btn{
+  width: 80px;
+  background: #009C95;
+  border: 4px solid #009C95;
+  border-bottom: none;
+}
+.delete a, .sample .delete{
+  width: 80px;
+  background: #DD9BA5;
+  border: 4px solid #DD9BA5;
+  border-bottom: none;
+}
+.edit a:hover, .delete a:hover, .f-btn:hover{
+  text-decoration: none;
+  transition: ease 0.2s;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
+  border: none;
+  transform: translateY(12px);
+}
+.edit a:hover, .f-btn:hover{
+  background: #025043;
+}
+.delete a:hover{
+  background: #da3850;
+}
+.show a, .show-delete a{
+  font-size: 14px; cursor: pointer;
+}
+.show a{
+  width: 110px;
+  background: #ffc107;
+  border: 4px solid #ffc107;
+  border-bottom: none;
+}
+.show-delete a{
+  width: 185px;
+  background: #DD9BA5;
+  border: 4px solid #DD9BA5;
+  border-bottom: none;
+}
+.show a:hover, .show-delete a:hover{
+  text-decoration: none;
+  transition: ease 0.2s;
+  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
+  transform: translateY(8px);
+}
+.show a:hover{
+  background: #747e04;
+  border: 4px solid #747e04;
+  border-bottom: none;
+}
+.show-delete a:hover{
+  background: #e43d56;
+  border: 4px solid #e43d56;
+  border-bottom: none;
 }
 // タブエリア
 .tab_area{
@@ -161,7 +203,10 @@ a:hover{
   letter-spacing: -0.05em;
   padding: 0 70px 0 0;
 }
-.nav .nav-item{
+.nav a:hover{
+  background: #afd6d8;
+}
+.nav-item{
   margin: 0 3px;
   display: inline-block;
   color: #fff;
@@ -175,10 +220,8 @@ a:hover{
   transform: translateY(8px);
   position: relative;
 }
-.nav .nav-item a{
-  display: inline-block;
+.nav-item a{
   color: #fff;
-  text-decoration: none;
   border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
 }
 .nav-item1{
@@ -195,12 +238,6 @@ a:hover{
   transform:translateY(4px);
   position:relative;
   z-index: 1;
-}
-.nav a:last-of-type{
-  margin-right:0;
-}
-.nav a:hover{
-  background: #afd6d8;
 }
 // 表示切り替え
 .dropdown{
@@ -556,55 +593,6 @@ a:hover{
 .consumed .fas, .consumed .far{
   font-family: 'FontAwesome', 'Nchihaya';
   font-weight: 400;
-}
-
-// ボタン
-.col-1 .btn-group{
-  letter-spacing: -0.1em;
-}
-.btn-group{
-  margin: 1% 0 1% 7%;
-}
-.btn-outline-info, .btn-outline-worning, .btn-outline-danger{
-  padding: 0.3em;
-  font-size: 15px;
-  letter-spacing: -0.1em;
-}
-.btn-group .edit a, .btn-group .delete a{
-  color: #fff;
-  width: 80px;
-  margin: 10px 0;
-  display: inline-block;
-  text-align: center;
-  padding: 5px 0 5px;
-  font-size: 16px; cursor:pointer;
-  transition: ease 0.2s;
-  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
-  transform:translateY(8px);
-  position:relative;
-}
-.btn-group .edit a{
-  background: #009C95;
-  border: 4px solid #009C95;
-  border-bottom: none;
-}
-.btn-group .delete a{
-  background: #DD9BA5;
-  border: 4px solid #DD9BA5;
-  border-bottom: none;
-}
-.btn-group a:hover{
-  text-decoration: none;
-  transition: ease 0.2s;
-  border-radius: 30% 5% 2% 5%/ 14% 40% 25% 25%;
-  border: none;
-  transform: translateY(12px);
-}
-.btn-group .edit a:hover{
-  background: #025043;
-}
-.btn-group .delete a:hover{
-  background: #da3850;
 }
 // ログイン画面
 .box-name input[type="text"], .box-email input[type="email"], .box-password input[type="password"] {
