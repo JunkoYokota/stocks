@@ -36,7 +36,9 @@
               <%= form.label :content %><br />
               <%= form.rich_text_area :content, placeholder: '<詳細・メモ>　添付ファイルは2つまで　　　　　　　　　　　　　　文字入力は右クリックで' %>
             </li>
-            <%= form.submit "登録する", class: 'btn-usr' %>
+          </div>
+          <div class="col-11 d-flex justify-content-end align-items-end btn-group">
+            <%= form.submit "登録する", class: 'f-btn' %>
           </div>
         </div>
         <% end %>

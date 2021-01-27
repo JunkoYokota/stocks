@@ -19,6 +19,7 @@ class StocksController < ApplicationController
     @page = 10
     @stocks = Stock.where(consumed: false, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
   end
+
   def past_page
     @page = params[:per]
     @stocks = Stock.where(consumed: false, user_id: current_user.id).recent.paginate(page: params[:page], per_page: @page)
@@ -28,6 +29,7 @@ class StocksController < ApplicationController
   def near
     @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_near.recent.paginate(page: params[:page], per_page: 5)
   end
+
   def expire
     @stocks = Stock.where(consumed: true, user_id: current_user.id).stocks_expire.recent.paginate(page: params[:page], per_page: 5)
   end
@@ -35,9 +37,11 @@ class StocksController < ApplicationController
   def favorites
     @stocks = Stock.where(user_id: current_user.id).stocks_favorites.recent.paginate(page: params[:page], per_page: 5)
   end
+
   def tags
     @stocks = Stock.where(user_id: current_user.id).stocks_tags.recent.paginate(page: params[:page], per_page: 5)
   end
+  
   def consumed
     @stock = Stock.find(params[:id])
   end
@@ -84,7 +88,6 @@ class StocksController < ApplicationController
   def destroy
     stock = Stock.find(params[:id])
     stock.destroy
-    # redirect_to stock_path
   end
 
   def confirm
@@ -124,9 +127,6 @@ class StocksController < ApplicationController
   def stocks_params
     params.require(:stock).permit(stocks_ids: [:product_name, :expiration, :detail, :open_date, :consumed, :favorites, :tags, :content]).merge(user_id: current_user.id)
   end
-  # def tags
-  #   params.require(:stock).permit(:favorites, :tags, :consumed).merge(user_id: current_user.id)
-  # end
 
   def move_to_top
     redirect_to top_path unless user_signed_in?
