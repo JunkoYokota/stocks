@@ -27,11 +27,11 @@
             </div>
             <div class="col-11 d-flex justify-content-end align-items-end btn-group">
               <% if @stock.consumed == false %>
-                <li class="show"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put %></li>
+                <li class="show_consumed"><%= link_to "再度在庫にする", stock_path(@stock, stock: {consumed: true}), method: :put %></li>
               <% else %>
-                <li class="show"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
+                <li class="show_consumed"><%= link_to "消費済みにする", stock_path(@stock, stock: {consumed: false}), method: :put %></li>
               <% end %>
-              <li class="show-delete"><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %></li>
+              <li class="show_delete"><%= link_to "削除 (今後購入しない場合)", "/stocks/#{@stock.id}/", method: :delete %></li>
             </div>
           </div>
         </label>
