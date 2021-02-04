@@ -217,7 +217,7 @@ h3 a:hover{
   width: 95%;
 }
 // パネル
-.panel_area{
+.panel_area, .user_panel_area{
   width: 100%;
   background: #fff;
   padding: 15px 10px 10px 2px;
@@ -242,23 +242,6 @@ h3 a:hover{
 .panel_area .col-7 h5{
   font-size: 18px;
   margin-bottom: 0;
-}
-.user_panel_area{
-  width: 100%;
-  background: #fff;
-  padding: 15px 10px 10px 2px;
-  border: 4px solid #90C9CF;
-  border-radius: 2% 12% 2% 8%/ 25% 8% 22% 18%;
-  position: relative;
-  z-index: 0;
-}
-.user_panel_area .col-5{
-  padding: 10px 30px;
-}
-.user_panel_area .col-12{
-  background: linear-gradient(#fff 95%, #87CEFA 5%);
-  background-size: 70% 23px;
-  margin: auto;
 }
 .user_panel_area .col-11{
   background: linear-gradient(#fff 98%, #87CEFA 2%);
@@ -522,6 +505,7 @@ h3 a:hover{
 .box-name input[type="text"], .box-email input[type="email"], .box-password input[type="password"]{
   border-style: none;
   box-sizing: border-box;
+  font-family: 'smartfontUI';
   width: 100%;
   height: 28px;
   border: 1px solid #a6a6a6;
@@ -656,11 +640,14 @@ h3 a:hover{
   font-size: 18px;
   padding: 0 20px 0 0;
   float: right;
-  color: #007bff;
+}
+.pagination a{
+  color: #696969;
 }
 .pagination a:hover{
-  background: #202020 none repeat scroll 0 0;
-  text-shadow: 1px 1px 1px #171717;
+  background: #ccffcc none repeat scroll 0 0;
+  text-shadow: 1px 1px 1px #007bff;
+  border-radius: 15px;
 }
 .pagination a:active{
   text-shadow: none;
@@ -668,16 +655,9 @@ h3 a:hover{
 .pagination .current{
   background: #202020 none repeat scroll 0 0;
   color: white;
-  text-shadow: 1px 1px 1px #171717;
+  text-shadow: 1px 1px 1px #007bff;
 }
-.pagination>li>a{
-  border: none;
-  color: #696969;
-}
-.pagination>.active>a{
+.pagination .active a{
   background: #93c9ff;
-  border-radius: 15px;
-}
-.pagination>li>a:hover{
   border-radius: 15px;
 }

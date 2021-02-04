@@ -5,7 +5,9 @@
     </div>
     <div class=" col-6 text-right">
           <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, :class => "btn-usr" %>
-          <%= button_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn-usr" %>
+          <% unless current_page?(edit_user_registration_path) %>
+            <%= button_to "ユーザー情報編集画面へ", edit_user_registration_path, method: :get, :class => "btn-usr" %>
+          <% end %>
     </div>
   </div>
 </div>

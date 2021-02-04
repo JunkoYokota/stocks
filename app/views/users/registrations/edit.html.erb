@@ -2,15 +2,8 @@
 <div class="wrap">
   <div class="tab_area">
     <ul class="row nav justify-content-end no-gutters">
-      <li class="col-sm-2 nav-item justify-content-start">
-        <a href="/stocks">
-          <i class="far fa-lightbulb"></i>
-          <span class="d-non d-sm-inline pl-1">あなたの在庫</span></a>
-      </li>
-      <li class="col-sm-2 nav-item1 justify-content-start">
-        <i class="far fa-bell"></i>
-        <span class="d-non d-sm-inline pl-1">アカウント編集中</span>
-      </li>
+      <li class="col-sm-2 nav-item justify-content-start"><a href="/stocks"><i class="far fa-lightbulb"></i><span class="d-non d-sm-inline pl-1">あなたの在庫</span></a></li>
+      <li class="col-sm-2 nav-item1 justify-content-start"><i class="far fa-bell"></i><span class="d-non d-sm-inline pl-1">アカウント</span></li>
     </ul>
   </div>
   <div class="user_panel_area">
@@ -18,7 +11,7 @@
       <div class="col-11">
         <div class="product_name">
           <li>
-            <h2>アカウント編集</h2>
+            <h3>アカウント編集</h3>
           </li>
         </div>
         <div class="row justify-content-between border_bg">
@@ -63,16 +56,7 @@
       </div>
     </ul>
     <% end %>
-    <div class="col-9">
-      <%= render "users/shared/links" %>
-    </div>
   </div>
 </div>
-<p>アカウント削除はこちらです<%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'btn-usr' %></p>
 
-<<<<<<< HEAD
-=======
 <p>アカウント削除しますか？<%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'btn-usr' %></p>
-
->>>>>>> creating-the-top-screen
-<%= link_to "Back", :back %>
