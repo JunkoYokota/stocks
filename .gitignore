@@ -37,6 +37,6 @@ yarn-debug.log*
 
 /vendor/bundle
 .DS_Store
-docker-compose.yml
-/config/database.yml
-db/stocks.csv
+docker-compose_t.yml
+/config/database_t.yml
+# db/stocks.csv
