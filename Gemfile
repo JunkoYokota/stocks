@@ -64,3 +64,4 @@ gem "font-awesome-rails"
 gem 'rails-i18n'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "aws-sdk-s3", require: false
