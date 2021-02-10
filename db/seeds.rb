@@ -8,7 +8,7 @@
 
 require "csv"
 
-stocks_csv = CSV.readlines("db/stocks.csv", headers: true)
+stocks_csv = CSV.readlines("db/stocks_view.csv", headers: true)
 stocks_csv.each do |row|
   Stock.create!(
     id: row['id'],
