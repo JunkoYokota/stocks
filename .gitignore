@@ -38,5 +38,3 @@ yarn-debug.log*
 db/stocks.csv
 db/users.csv
 heroku-database.txt
-docker-compose.yml
-/config/database.yml
