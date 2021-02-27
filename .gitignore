@@ -27,16 +27,16 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
 /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
 /vendor/bundle
 .DS_Store
-docker-compose_t.yml
-/config/database_t.yml
-# db/stocks.csv
+db/stocks.csv
+db/users.csv
+heroku-database.txt
+docker-compose.yml
+/config/database.yml

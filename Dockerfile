@@ -26,6 +26,9 @@ RUN gem install bundler
 RUN bundle _2.1.4_ install
 COPY . /app
 
+RUN mkdir /root/.vim
+COPY .vimrc /root/.vimrc
+WORKDIR /root
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
