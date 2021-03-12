@@ -14,25 +14,13 @@ stocks_csv.each do |row|
     id: row['id'],
     product_name: row['product_name'],
     expiration: row['expiration'],
+    open_date: row['open_date'],
     detail: row['detail'],
     created_at: row['created_at'],
     updated_at: row['updated_at'],
-    open_date: row['open_date'],
     consumed: row['consumed'],
     user_id: row['user_id'],
+    tags: row['tags'],
+    favorites: row['favorites'],
   )
 end
-
-# users_csv = CSV.readlines("db/users.csv", headers: true)
-# users_csv.each do |row|
-#   User.create!(
-#     id: row['id'],
-#     email: row['email'],
-#     user_name: row['user_name'],
-#     encrypted_password: row['encrypted_password'],
-#     reset_password_token: row['reset_password_token'],
-#     reset_password_sent_at: row['reset_password_sent_at'],
-#     remember_created_at: row['remember_created_at'],
-#     created_at: row['created_at'],
-#     updated_at: row['updated_at'])
-# end

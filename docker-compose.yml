@@ -6,11 +6,9 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.db[:password] %>
+    env_file: development.env
     ports:
       - "4306:3306"
-
   web:
     image: rails6
     build: .
@@ -23,13 +21,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    env_file: development.env
     stdin_open: true
     tty: true
-  mailcatcher:
-    image: schickling/mailcatcher
-    ports:
-      - "1080:1080"
-      - "1025:1025"
 volumes:
   mysql-data:
     driver: local

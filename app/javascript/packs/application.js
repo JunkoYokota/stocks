@@ -22,10 +22,9 @@ require("@rails/actiontext")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 // 
-import 'bootstrap'
+import "bootstrap"
 import "../src/application"
 import "../src/stocks"
 import "../src/actiontext"
 import "../src/font-awesome-4.7.0/css/font-awesome.css"
-import "../src/stocks"
 
