@@ -27,6 +27,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials/development.key
+/config/credentials/production.key
 /public/packs
 /public/packs-test
 /node_modules
@@ -39,3 +41,5 @@ db/stocks.csv
 db/users.csv
 heroku-database.txt
 development.env
+
+/config/credentials/deveropment.key
